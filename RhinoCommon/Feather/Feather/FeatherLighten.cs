@@ -48,6 +48,8 @@ namespace Feather
             RhinoApp.WriteLine("Number of mesh vertices: {0}", mesh.Vertices.Count);
             RhinoApp.WriteLine("Number of mesh triangles: {0}", mesh.Faces.Count);
 
+            Helper.SaveAsStl(mesh, "mesh.stl");
+
             return Result.Success;
         }
     }
