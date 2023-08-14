@@ -1,5 +1,6 @@
 ﻿using Rhino;
 using Rhino.Commands;
+using Rhino.DocObjects;
 using Rhino.Geometry;
 using Rhino.Input;
 using Rhino.Input.Custom;
@@ -26,6 +27,27 @@ namespace Feather
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
             // Behavior of the command.
+
+            RhinoObject obj = Helper.GetSingle();
+            if (null == obj || obj.ObjectType != ObjectType.Mesh)
+            {
+                RhinoApp.WriteLine("Mesh is not valid.");
+                return Result.Failure;
+            }
+            Mesh mesh = obj.Geometry as Mesh;
+            if (mesh == null)
+            {
+                RhinoApp.WriteLine("Mesh is not valid.");
+                return Result.Failure;
+            }
+            bool converted = mesh.Faces.ConvertQuadsToTriangles();
+            if (converted)
+            {
+                RhinoApp.WriteLine("Mesh contains quads. They are converted to triangles.");
+            }
+            RhinoApp.WriteLine("Number of mesh vertices: {0}", mesh.Vertices.Count);
+            RhinoApp.WriteLine("Number of mesh triangles: {0}", mesh.Faces.Count);
+
             return Result.Success;
         }
     }
