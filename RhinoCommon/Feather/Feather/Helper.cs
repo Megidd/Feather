@@ -14,6 +14,29 @@ namespace Feather
 {
     internal class Helper
     {
+        public static Result GetInputStl(string filename= "mesh.stl")
+        {
+            RhinoObject obj = GetSingle();
+            if (null == obj || obj.ObjectType != ObjectType.Mesh)
+            {
+                RhinoApp.WriteLine("Mesh is not valid.");
+                return Result.Failure;
+            }
+            Mesh mesh = obj.Geometry as Mesh;
+            if (mesh == null)
+            {
+                RhinoApp.WriteLine("Mesh is not valid.");
+                return Result.Failure;
+            }
+
+            RhinoApp.WriteLine("Number of mesh vertices: {0}", mesh.Vertices.Count);
+            RhinoApp.WriteLine("Number of mesh triangles: {0}", mesh.Faces.Count);
+
+            SaveAsStl(mesh, filename);
+
+            return Result.Success;
+        }
+
         /// <summary>
         /// A simple method to prompt the user to select a single mesh.
         /// </summary>

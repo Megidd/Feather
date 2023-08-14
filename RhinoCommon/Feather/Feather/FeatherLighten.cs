@@ -28,23 +28,12 @@ namespace Feather
         {
             // Behavior of the command.
 
-            RhinoObject obj = Helper.GetSingle();
-            if (null == obj || obj.ObjectType != ObjectType.Mesh)
-            {
-                RhinoApp.WriteLine("Mesh is not valid.");
-                return Result.Failure;
-            }
-            Mesh mesh = obj.Geometry as Mesh;
-            if (mesh == null)
-            {
-                RhinoApp.WriteLine("Mesh is not valid.");
-                return Result.Failure;
-            }
-            
-            RhinoApp.WriteLine("Number of mesh vertices: {0}", mesh.Vertices.Count);
-            RhinoApp.WriteLine("Number of mesh triangles: {0}", mesh.Faces.Count);
+            string inputStl = "input.stl";
 
-            Helper.SaveAsStl(mesh, "mesh.stl");
+            if (Helper.GetInputStl(inputStl) == Result.Failure)
+            {
+                return Result.Failure;
+            }
 
             return Result.Success;
         }
