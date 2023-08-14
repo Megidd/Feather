@@ -1,4 +1,5 @@
-﻿using Rhino.Commands;
+﻿using Rhino;
+using Rhino.Commands;
 using Rhino.DocObjects;
 using Rhino.Geometry;
 using Rhino.Input.Custom;
@@ -43,7 +44,11 @@ namespace Feather
         public static void GetBuffers(Mesh mesh, out float[] vertexBuffer, out int[] indexBuffer)
         {
             // Convert quads to triangles
-            mesh.Faces.ConvertQuadsToTriangles();
+            bool converted = mesh.Faces.ConvertQuadsToTriangles();
+            if (converted)
+            {
+                RhinoApp.WriteLine("Mesh contains quads. They are converted to triangles.");
+            }
 
             // Get vertex buffer
             Point3f[] vertices = mesh.Vertices.ToPoint3fArray();

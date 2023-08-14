@@ -40,11 +40,7 @@ namespace Feather
                 RhinoApp.WriteLine("Mesh is not valid.");
                 return Result.Failure;
             }
-            bool converted = mesh.Faces.ConvertQuadsToTriangles();
-            if (converted)
-            {
-                RhinoApp.WriteLine("Mesh contains quads. They are converted to triangles.");
-            }
+            
             RhinoApp.WriteLine("Number of mesh vertices: {0}", mesh.Vertices.Count);
             RhinoApp.WriteLine("Number of mesh triangles: {0}", mesh.Faces.Count);
 
