@@ -59,6 +59,7 @@ namespace Feather
             doc.Objects.AddLine(pt0, pt1);
             doc.Views.Redraw();
             RhinoApp.WriteLine("The {0} command added one line to the document.", EnglishName);
+            RhinoApp.WriteLine("The distance between the two points is {0} {1}.", pt0.DistanceTo(pt1).ToString(), doc.ModelUnitSystem.ToString().ToLower());
 
             // ---
             return Result.Success;
