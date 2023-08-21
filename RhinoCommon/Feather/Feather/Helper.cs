@@ -285,8 +285,6 @@ namespace Feather
         {
             try
             {
-                RhinoApp.WriteLine("cmd_OutputDataReceived is called.");
-
                 if (!String.IsNullOrEmpty(e.Data))
                 {
                     output.Append(e.Data + Environment.NewLine);
