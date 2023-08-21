@@ -251,6 +251,9 @@ namespace Feather
                 cmd.Exited += new EventHandler(cmd_Exited);
 
                 cmd.Start();
+
+                // Begin asynchronous reading of output.
+                cmd.BeginOutputReadLine();
             }
 
             catch (Exception ex)
@@ -282,6 +285,8 @@ namespace Feather
         {
             try
             {
+                RhinoApp.WriteLine("cmd_OutputDataReceived is called.");
+
                 if (!String.IsNullOrEmpty(e.Data))
                 {
                     output.Append(e.Data + Environment.NewLine);
