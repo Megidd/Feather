@@ -255,7 +255,7 @@ namespace Feather
 
             catch (Exception ex)
             {
-                RhinoApp.WriteLine("Error on process start: " + ex.Message);
+                RhinoApp.WriteLine("Error on process start: {0}" + ex.Message);
             }
         }
 
@@ -274,7 +274,7 @@ namespace Feather
 
             catch (Exception ex)
             {
-                RhinoApp.WriteLine("Error on process exit: " + ex.Message);
+                RhinoApp.WriteLine("Error on process exit: {0}" + ex.Message);
             }
         }
 
@@ -289,7 +289,7 @@ namespace Feather
             }
             catch (Exception ex)
             {
-                RhinoApp.WriteLine("Error on process data-receive: " + ex.Message);
+                RhinoApp.WriteLine("Error on process data-receive: {0}" + ex.Message);
             }
         }
     }
