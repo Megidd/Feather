@@ -15,7 +15,7 @@ namespace Feather
 {
     internal class Helper
     {
-        public static Result GetInputStl(string filename= "mesh.stl")
+        public static Result GetInputStl(string filename = "mesh.stl")
         {
             RhinoObject obj = GetSingle();
             if (null == obj || obj.ObjectType != ObjectType.Mesh)
@@ -234,24 +234,24 @@ namespace Feather
 
         public static void RunLogic(string args)
         {
-        output = new StringBuilder();
-        cmd = new Process();
+            output = new StringBuilder();
+            cmd = new Process();
 
             try
             {
-            cmd.StartInfo.FileName = "Cotton.exe";
-            cmd.StartInfo.Arguments = args;
-            cmd.StartInfo.UseShellExecute = false;
-            cmd.StartInfo.CreateNoWindow = true;
-            cmd.StartInfo.RedirectStandardOutput = true;
-            cmd.StartInfo.RedirectStandardInput = true;
+                cmd.StartInfo.FileName = "Cotton.exe";
+                cmd.StartInfo.Arguments = args;
+                cmd.StartInfo.UseShellExecute = false;
+                cmd.StartInfo.CreateNoWindow = true;
+                cmd.StartInfo.RedirectStandardOutput = true;
+                cmd.StartInfo.RedirectStandardInput = true;
 
-            cmd.EnableRaisingEvents = true;
-            cmd.OutputDataReceived +=
-               new DataReceivedEventHandler(cmd_OutputDataReceived);
-            cmd.Exited += new EventHandler(cmd_Exited);
+                cmd.EnableRaisingEvents = true;
+                cmd.OutputDataReceived +=
+                   new DataReceivedEventHandler(cmd_OutputDataReceived);
+                cmd.Exited += new EventHandler(cmd_Exited);
 
-            cmd.Start();
+                cmd.Start();
             }
 
             catch (Exception ex)
@@ -264,8 +264,8 @@ namespace Feather
         {
             try
             {
-            RhinoApp.WriteLine("Process output: {0}", output.ToString());
-            cmd.Dispose();
+                RhinoApp.WriteLine("Process output: {0}", output.ToString());
+                cmd.Dispose();
             }
 
             catch (Exception ex)
@@ -278,10 +278,10 @@ namespace Feather
         {
             try
             {
-            if (!String.IsNullOrEmpty(e.Data))
-            {
-                output.Append(e.Data + Environment.NewLine);
-            }
+                if (!String.IsNullOrEmpty(e.Data))
+                {
+                    output.Append(e.Data + Environment.NewLine);
+                }
             }
             catch (Exception ex)
             {
