@@ -5,7 +5,6 @@ using Rhino.Geometry;
 using Rhino.Input;
 using Rhino.Input.Custom;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
