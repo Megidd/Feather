@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Rhino;
 using Rhino.Commands;
 
@@ -40,6 +41,13 @@ namespace Feather
             }
 
             bool infill = Helper.GetYesNoFromUser("Do you want infill for hollowed mesh?");
+
+            // Prepare arguments as text fields.
+            Dictionary<string, string> args = new Dictionary<string, string>();
+            args.Add("file", inputStl);
+            args.Add("thickness", thickness.ToString());
+            args.Add("precision", precision.ToString());
+            args.Add("infill", infill ? "true" : "false");
 
             return Result.Success;
         }
