@@ -228,5 +228,10 @@ namespace Feather
                     RhinoApp.WriteLine("Invalid input.");
             }
         }
+
+        public static string RunLogic(Dictionary<string, string> args)
+        {
+            return "";
+        }
     }
 }

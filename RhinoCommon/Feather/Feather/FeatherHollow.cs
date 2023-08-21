@@ -52,6 +52,8 @@ namespace Feather
             args.Add("precision", precision.ToString());
             args.Add("outPath", outPath);
 
+            Helper.RunLogic(args);
+
             return Result.Success;
         }
     }
