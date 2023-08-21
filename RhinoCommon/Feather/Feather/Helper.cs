@@ -234,6 +234,8 @@ namespace Feather
 
         public static void RunLogic(string args)
         {
+            try
+            {
             cmd.StartInfo.FileName = "Cotton.exe";
             cmd.StartInfo.Arguments = args;
             cmd.StartInfo.UseShellExecute = false;
@@ -247,6 +249,12 @@ namespace Feather
             cmd.Exited += new EventHandler(cmd_Exited);
 
             cmd.Start();
+            }
+
+            catch (Exception ex)
+            {
+                RhinoApp.WriteLine("Error on process start: " + ex.Message);
+            }
         }
 
         private static void cmd_Exited(object sender, EventArgs e)
