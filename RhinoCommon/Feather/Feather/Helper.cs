@@ -262,15 +262,30 @@ namespace Feather
 
         private static void cmd_Exited(object sender, EventArgs e)
         {
+            try
+            {
             RhinoApp.WriteLine("Process output: {0}", output.ToString());
             cmd.Dispose();
+            }
+
+            catch (Exception ex)
+            {
+                RhinoApp.WriteLine("Error on process start: " + ex.Message);
+            }
         }
 
         private static void cmd_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
+            try
+            {
             if (!String.IsNullOrEmpty(e.Data))
             {
                 output.Append(e.Data + Environment.NewLine);
+            }
+            }
+            catch (Exception ex)
+            {
+                RhinoApp.WriteLine("Error on process start: " + ex.Message);
             }
         }
     }
