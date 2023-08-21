@@ -229,11 +229,14 @@ namespace Feather
             }
         }
 
-        private static StringBuilder output = new StringBuilder();
-        private static Process cmd = new Process();
+        private static StringBuilder output;
+        private static Process cmd;
 
         public static void RunLogic(string args)
         {
+        output = new StringBuilder();
+        cmd = new Process();
+
             try
             {
             cmd.StartInfo.FileName = "Cotton.exe";
