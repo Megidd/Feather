@@ -6,10 +6,10 @@ using Rhino.Input;
 using Rhino.Input.Custom;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Feather
 {
@@ -229,9 +229,37 @@ namespace Feather
             }
         }
 
-        public static string RunLogic(Dictionary<string, string> args)
+        private static StringBuilder output = new StringBuilder();
+        private static Process cmd = new Process();
+
+        public static void RunLogic(Dictionary<string, string> args)
         {
-            return "";
+            cmd.StartInfo.FileName = "Cotton.exe";
+            cmd.StartInfo.UseShellExecute = false;
+            cmd.StartInfo.CreateNoWindow = true;
+            cmd.StartInfo.RedirectStandardOutput = true;
+            cmd.StartInfo.RedirectStandardInput = true;
+
+            cmd.EnableRaisingEvents = true;
+            cmd.OutputDataReceived +=
+               new DataReceivedEventHandler(cmd_OutputDataReceived);
+            cmd.Exited += new EventHandler(cmd_Exited);
+
+            cmd.Start();
+        }
+
+        private static void cmd_Exited(object sender, EventArgs e)
+        {
+            RhinoApp.WriteLine("Process output: {0}", output.ToString());
+            cmd.Dispose();
+        }
+
+        private static void cmd_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(e.Data))
+            {
+                output.Append(e.Data + Environment.NewLine);
+            }
         }
     }
 }

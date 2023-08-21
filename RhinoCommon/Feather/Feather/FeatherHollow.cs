@@ -54,6 +54,8 @@ namespace Feather
 
             Helper.RunLogic(args);
 
+            RhinoApp.WriteLine("{0} process is started. Please wait...", EnglishName);
+
             return Result.Success;
         }
     }
