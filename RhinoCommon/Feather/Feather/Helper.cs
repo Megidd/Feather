@@ -232,9 +232,10 @@ namespace Feather
         private static StringBuilder output = new StringBuilder();
         private static Process cmd = new Process();
 
-        public static void RunLogic(Dictionary<string, string> args)
+        public static void RunLogic(string args)
         {
             cmd.StartInfo.FileName = "Cotton.exe";
+            cmd.StartInfo.Arguments = args;
             cmd.StartInfo.UseShellExecute = false;
             cmd.StartInfo.CreateNoWindow = true;
             cmd.StartInfo.RedirectStandardOutput = true;

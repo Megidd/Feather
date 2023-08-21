@@ -45,12 +45,15 @@ namespace Feather
             string outPath = "output.stl";
 
             // Prepare arguments as text fields.
-            Dictionary<string, string> args = new Dictionary<string, string>();
-            args.Add("inPath", inPath);
-            args.Add("infill", infill ? "true" : "false");
-            args.Add("thickness", thickness.ToString());
-            args.Add("precision", precision.ToString());
-            args.Add("outPath", outPath);
+            string args = inPath;
+            args += " ";
+            args += infill ? "true" : "false";
+            args += " ";
+            args += thickness.ToString();
+            args += " ";
+            args += precision.ToString();
+            args += " ";
+            args += outPath;
 
             Helper.RunLogic(args);
 
