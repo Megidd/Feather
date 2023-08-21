@@ -19,12 +19,14 @@ namespace Feather
 
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
-            string inputStl = "input.stl";
+            string inPath = "input.stl";
 
-            if (Helper.GetInputStl(inputStl) == Result.Failure)
+            if (Helper.GetInputStl(inPath) == Result.Failure)
             {
                 return Result.Failure;
             }
+
+            bool infill = Helper.GetYesNoFromUser("Do you want infill for hollowed mesh?");
 
             float thickness = Helper.GetFloatFromUser(1.8, 0.0, 100.0, "Enter wall thickness for hollowing.");
 
@@ -40,14 +42,15 @@ namespace Feather
                     return Result.Failure;
             }
 
-            bool infill = Helper.GetYesNoFromUser("Do you want infill for hollowed mesh?");
+            string outPath = "output.stl";
 
             // Prepare arguments as text fields.
             Dictionary<string, string> args = new Dictionary<string, string>();
-            args.Add("file", inputStl);
+            args.Add("inPath", inPath);
+            args.Add("infill", infill ? "true" : "false");
             args.Add("thickness", thickness.ToString());
             args.Add("precision", precision.ToString());
-            args.Add("infill", infill ? "true" : "false");
+            args.Add("outPath", outPath);
 
             return Result.Success;
         }
