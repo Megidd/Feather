@@ -243,22 +243,24 @@ namespace Feather
                 cmd.StartInfo.UseShellExecute = false;
                 cmd.StartInfo.CreateNoWindow = true;
                 cmd.StartInfo.RedirectStandardOutput = true;
+                cmd.StartInfo.RedirectStandardError = true;
                 cmd.StartInfo.RedirectStandardInput = true;
 
                 cmd.EnableRaisingEvents = true;
-                cmd.OutputDataReceived +=
-                   new DataReceivedEventHandler(cmd_OutputDataReceived);
+                cmd.OutputDataReceived += new DataReceivedEventHandler(cmd_OutputDataReceived);
+                cmd.ErrorDataReceived += new DataReceivedEventHandler(cmd_OutputDataReceived);
                 cmd.Exited += new EventHandler(cmd_Exited);
 
                 cmd.Start();
 
                 // Begin asynchronous reading of output.
                 cmd.BeginOutputReadLine();
+                cmd.BeginErrorReadLine();
             }
 
             catch (Exception ex)
             {
-                RhinoApp.WriteLine("Error on process start: {0}" + ex.Message);
+                RhinoApp.WriteLine("Error on process start: {0}", ex.Message);
             }
         }
 
@@ -277,7 +279,7 @@ namespace Feather
 
             catch (Exception ex)
             {
-                RhinoApp.WriteLine("Error on process exit: {0}" + ex.Message);
+                RhinoApp.WriteLine("Error on process exit: {0}", ex.Message);
             }
         }
 
@@ -292,7 +294,7 @@ namespace Feather
             }
             catch (Exception ex)
             {
-                RhinoApp.WriteLine("Error on process data-receive: {0}" + ex.Message);
+                RhinoApp.WriteLine("Error on process data-receive: {0}", ex.Message);
             }
         }
     }
