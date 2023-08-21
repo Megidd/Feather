@@ -264,7 +264,12 @@ namespace Feather
         {
             try
             {
-                RhinoApp.WriteLine("Process output: {0}", output.ToString());
+                if (!string.IsNullOrEmpty(output.ToString()))
+                {
+                    RhinoApp.WriteLine("Process output: {0}", output.ToString());
+                }
+
+                RhinoApp.WriteLine("Process finished.");
                 cmd.Dispose();
             }
 
