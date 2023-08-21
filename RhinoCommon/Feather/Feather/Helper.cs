@@ -228,12 +228,12 @@ namespace Feather
             }
         }
 
-        private static StringBuilder output;
+        private static StringBuilder cmdLog;
         private static Process cmd;
 
         public static void RunLogic(string args)
         {
-            output = new StringBuilder();
+            cmdLog = new StringBuilder();
             cmd = new Process();
 
             try
@@ -247,13 +247,13 @@ namespace Feather
                 cmd.StartInfo.RedirectStandardInput = true;
 
                 cmd.EnableRaisingEvents = true;
-                cmd.OutputDataReceived += new DataReceivedEventHandler(cmd_OutputDataReceived);
-                cmd.ErrorDataReceived += new DataReceivedEventHandler(cmd_OutputDataReceived);
+                cmd.OutputDataReceived += new DataReceivedEventHandler(cmd_LogReceived);
+                cmd.ErrorDataReceived += new DataReceivedEventHandler(cmd_LogReceived);
                 cmd.Exited += new EventHandler(cmd_Exited);
 
                 cmd.Start();
 
-                // Begin asynchronous reading of output.
+                // Begin asynchronous reading.
                 cmd.BeginOutputReadLine();
                 cmd.BeginErrorReadLine();
             }
@@ -268,9 +268,9 @@ namespace Feather
         {
             try
             {
-                if (!string.IsNullOrEmpty(output.ToString()))
+                if (!string.IsNullOrEmpty(cmdLog.ToString()))
                 {
-                    RhinoApp.WriteLine("Process logs:\n{0}", output.ToString());
+                    RhinoApp.WriteLine("Process logs:\n\n{0}", cmdLog.ToString());
                 }
 
                 RhinoApp.WriteLine("Process finished.");
@@ -283,18 +283,18 @@ namespace Feather
             }
         }
 
-        private static void cmd_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        private static void cmd_LogReceived(object sender, DataReceivedEventArgs e)
         {
             try
             {
                 if (!String.IsNullOrEmpty(e.Data))
                 {
-                    output.Append(e.Data + Environment.NewLine);
+                    cmdLog.Append(e.Data + Environment.NewLine);
                 }
             }
             catch (Exception ex)
             {
-                RhinoApp.WriteLine("Error on process data-receive: {0}", ex.Message);
+                RhinoApp.WriteLine("Error on process log: {0}", ex.Message);
             }
         }
     }
