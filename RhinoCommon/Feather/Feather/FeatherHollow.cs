@@ -19,8 +19,13 @@ namespace Feather
 
         private static string outPath = System.IO.Path.GetTempPath() + "output.stl"; // Abs path is easier.
 
+        private static RhinoDoc docCurrent; // Accessed by async post-process code.
+
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
+            // To be accessed by async post-process code.
+            docCurrent = doc;
+
             string inPath = System.IO.Path.GetTempPath() + "input.stl"; // Abs path is easier.
 
             if (Helper.GetInputStl(inPath) == Result.Failure)
@@ -74,8 +79,8 @@ namespace Feather
                     return;
                 }
 
-                String script = String.Format("_-Import \"{0}\" _Enter", outPath);
-                bool good = RhinoApp.RunScript(script, false);
+                // Import output STL and add it to the current 3D scene.
+                bool good = docCurrent.Import(outPath);
                 if (!good)
                 {
                     RhinoApp.WriteLine("Post process: output file cannot be imported: {0}", outPath);
