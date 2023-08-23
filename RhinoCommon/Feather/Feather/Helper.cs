@@ -230,8 +230,8 @@ namespace Feather
 
         private static StringBuilder cmdLog;
         private static Process cmd;
-
-        public static void RunLogic(string args)
+        public delegate void PostProcess(object sender, EventArgs e);
+        public static void RunLogic(string args, PostProcess pp)
         {
             cmdLog = new StringBuilder();
             cmd = new Process();
@@ -250,6 +250,7 @@ namespace Feather
                 cmd.OutputDataReceived += new DataReceivedEventHandler(cmd_LogReceived);
                 cmd.ErrorDataReceived += new DataReceivedEventHandler(cmd_LogReceived);
                 cmd.Exited += new EventHandler(cmd_Exited);
+                cmd.Exited += new EventHandler(pp);
 
                 cmd.Start();
 

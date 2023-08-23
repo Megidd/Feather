@@ -17,6 +17,8 @@ namespace Feather
 
         public override string EnglishName => "FeatherHollow";
 
+        private static string outPath = "output.stl";
+
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
             string inPath = "input.stl";
@@ -42,8 +44,6 @@ namespace Feather
                     return Result.Failure;
             }
 
-            string outPath = "output.stl";
-
             // Prepare arguments as text fields.
             string args = inPath;
             args += " ";
@@ -55,11 +55,16 @@ namespace Feather
             args += " ";
             args += outPath;
 
-            Helper.RunLogic(args);
+            Helper.RunLogic(args, PostProcess);
 
             RhinoApp.WriteLine("Process is started. Please wait...");
 
             return Result.Success;
+        }
+
+        private static void PostProcess(object sender, EventArgs e)
+        {
+            RhinoApp.WriteLine("Post processing of output path {0} is started.", outPath);
         }
     }
 }
