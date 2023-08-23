@@ -1,11 +1,6 @@
 ﻿using Rhino;
 using Rhino.Commands;
 using Rhino.DocObjects;
-using Rhino.Geometry;
-using Rhino.Input;
-using Rhino.Input.Custom;
-using System;
-using System.Collections.Generic;
 
 namespace Feather
 {
@@ -30,7 +25,8 @@ namespace Feather
 
             string inputStl = "input.stl";
 
-            if (Helper.GetInputStl(inputStl) == Result.Failure)
+            RhinoObject obj = Helper.GetInputStl(inputStl);
+            if (obj == null)
             {
                 return Result.Failure;
             }

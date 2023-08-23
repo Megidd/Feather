@@ -14,19 +14,19 @@ namespace Feather
 {
     internal class Helper
     {
-        public static Result GetInputStl(string filename = "mesh.stl")
+        public static RhinoObject GetInputStl(string filename = "mesh.stl")
         {
             RhinoObject obj = GetSingle();
             if (null == obj || obj.ObjectType != ObjectType.Mesh)
             {
                 RhinoApp.WriteLine("Mesh is not valid.");
-                return Result.Failure;
+                return null;
             }
             Mesh mesh = obj.Geometry as Mesh;
             if (mesh == null)
             {
                 RhinoApp.WriteLine("Mesh is not valid.");
-                return Result.Failure;
+                return null;
             }
 
             RhinoApp.WriteLine("Number of mesh vertices: {0}", mesh.Vertices.Count);
@@ -34,7 +34,7 @@ namespace Feather
 
             SaveAsStl(mesh, filename);
 
-            return Result.Success;
+            return obj;
         }
 
         /// <summary>
@@ -297,6 +297,75 @@ namespace Feather
             {
                 RhinoApp.WriteLine("Error on process log: {0}", ex.Message);
             }
+        }
+
+        public static Mesh LoadStlAsMesh(string fileName)
+        {
+            Mesh mesh = new Mesh();
+
+            using (BinaryReader reader = new BinaryReader(File.Open(fileName, FileMode.Open)))
+            {
+                // Skip the header
+                reader.ReadBytes(80);
+
+                // Read the number of triangles
+                uint numTriangles = reader.ReadUInt32();
+
+                // Read each triangle
+                for (int i = 0; i < numTriangles; i++)
+                {
+                    // Read the normal (we don't use it here, but it's part of the STL format)
+                    reader.ReadBytes(12);
+
+                    // Read and add the vertices
+                    Point3f[] vertices = new Point3f[3];
+                    for (int j = 0; j < 3; j++)
+                    {
+                        float x = reader.ReadSingle();
+                        float y = reader.ReadSingle();
+                        float z = reader.ReadSingle();
+                        vertices[j] = new Point3f(x, y, z);
+                    }
+
+                    // Add the vertices and the face to the mesh
+                    int vertexIndex = mesh.Vertices.Count;
+                    mesh.Vertices.AddVertices(vertices);
+                    mesh.Faces.AddFace(new MeshFace(vertexIndex, vertexIndex + 1, vertexIndex + 2));
+
+                    // Skip the attribute byte count
+                    reader.ReadBytes(2);
+                }
+            }
+
+            // Recompute normals for the mesh
+            mesh.Normals.ComputeNormals();
+
+            // Compact the mesh to improve efficiency
+            mesh.Compact();
+
+            return mesh;
+        }
+
+
+        public static bool HasInvalidVertexIndices(Mesh mesh)
+        {
+            // Check each face in the mesh
+            for (int i = 0; i < mesh.Faces.Count; i++)
+            {
+                MeshFace face = mesh.Faces[i];
+
+                // Check each vertex index in the face
+                if (face.A < 0 || face.A >= mesh.Vertices.Count ||
+                    face.B < 0 || face.B >= mesh.Vertices.Count ||
+                    face.C < 0 || face.C >= mesh.Vertices.Count)
+                {
+                    // If any vertex index is invalid, return true
+                    return true;
+                }
+            }
+
+            // If all face vertex indices are valid, return false
+            return false;
         }
     }
 }

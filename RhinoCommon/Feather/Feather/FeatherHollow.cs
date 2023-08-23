@@ -2,6 +2,8 @@
 using System.IO;
 using Rhino;
 using Rhino.Commands;
+using Rhino.DocObjects;
+using Rhino.Geometry;
 
 namespace Feather
 {
@@ -17,13 +19,16 @@ namespace Feather
 
         public override string EnglishName => "FeatherHollow";
 
-        private static string outPath = System.IO.Path.GetTempPath() + "output.stl"; // Abs path is easier.
+        private static RhinoDoc docCurrent; // Accessed by async post-process code.
+        private static RhinoObject inObj = null; // Input object.
+        private static string inPath = Path.GetTempPath() + "input.stl"; // Input object to be saved as STL.
+        private static string outPath = Path.GetTempPath() + "output.stl"; // Output STL saved by logic.
 
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
-            string inPath = System.IO.Path.GetTempPath() + "input.stl"; // Abs path is easier.
-
-            if (Helper.GetInputStl(inPath) == Result.Failure)
+            docCurrent = doc; // Accessed by async post-process code.
+            inObj = Helper.GetInputStl(inPath);
+            if ( inObj == null)
             {
                 return Result.Failure;
             }
@@ -67,19 +72,57 @@ namespace Feather
             try
             {
                 RhinoApp.WriteLine("Post process is started for {0}", outPath);
-                String ext = Path.GetExtension(outPath);
-                if (null == ext || !ext.ToLower().Equals(".stl", StringComparison.OrdinalIgnoreCase))
+                Mesh meshOut = Helper.LoadStlAsMesh(outPath);
+
+                // Run the CheckValidity method on the mesh.
+                MeshCheckParameters parameters = new MeshCheckParameters();
+                // Enable all the checks:
+                parameters.CheckForBadNormals = true;
+                parameters.CheckForDegenerateFaces = true;
+                parameters.CheckForDisjointMeshes = true;
+                parameters.CheckForDuplicateFaces = true;
+                parameters.CheckForExtremelyShortEdges = true;
+                parameters.CheckForInvalidNgons = true;
+                parameters.CheckForNakedEdges = true;
+                parameters.CheckForNonManifoldEdges = true;
+                parameters.CheckForRandomFaceNormals = true;
+                parameters.CheckForSelfIntersection = true;
+                parameters.CheckForUnusedVertices = true;
+                Rhino.FileIO.TextLog log = new Rhino.FileIO.TextLog(Path.GetTempPath() + "mesh-checks.txt");
+                bool isValid = meshOut.Check(log, ref parameters);
+                RhinoApp.WriteLine("Is output mesh valid? {0}", isValid);
+                bool hasInvalidVertexIndices = Helper.HasInvalidVertexIndices(meshOut);
+                RhinoApp.WriteLine("Does output mesh have invalid vertex indices? {0}", hasInvalidVertexIndices);
+                if (!isValid || hasInvalidVertexIndices)
                 {
-                    RhinoApp.WriteLine("Post process: file type must be STL:", outPath);
-                    return;
+                    RhinoApp.WriteLine("Total cound of disjoint meshes: {0}", parameters.DisjointMeshCount);
+                    RhinoApp.WriteLine("Output mesh cannot be added to scene due to being invalid");
+                }
+                else
+                {
+                    // If the mesh is valid, add it to the document.
+
+                    // Create a new object attributes with the desired name
+                    ObjectAttributes attributes = new ObjectAttributes();
+                    attributes.Name = "Hollowed: " + inObj.Attributes.Name;
+
+                    // Add the mesh to the document with the specified attributes
+                    docCurrent.Objects.AddMesh(meshOut, attributes);
+
+                    // Redraw the viewports to update the display
+                    docCurrent.Views.Redraw();
+
+                    if (docCurrent.Objects.Delete(inObj.Id, true))
+                    {
+                        // Good.
+                    }
+                    else
+                    {
+                        RhinoApp.WriteLine("Post process couldn't delete the original object.");
+                    }
                 }
 
-                String script = String.Format("-_Import \"{0}\" _Enter", outPath);
-                bool good = RhinoApp.RunScript(script, false);
-                if (!good)
-                {
-                    RhinoApp.WriteLine("Post process: output file cannot be imported: {0}", outPath);
-                }
+                RhinoApp.WriteLine("Post process finished.");
             }
 
             catch (Exception ex)
