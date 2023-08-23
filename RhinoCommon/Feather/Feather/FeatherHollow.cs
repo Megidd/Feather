@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using Rhino;
 using Rhino.Commands;
 
@@ -64,7 +64,28 @@ namespace Feather
 
         private static void PostProcess(object sender, EventArgs e)
         {
-            RhinoApp.WriteLine("Post processing of output path {0} is started.", outPath);
+            try
+            {
+                RhinoApp.WriteLine("Post processing of output path {0} is started.", outPath);
+                String ext = Path.GetExtension(outPath);
+                if (null == ext || !ext.ToLower().Equals(".stl", StringComparison.OrdinalIgnoreCase))
+                {
+                    RhinoApp.WriteLine("Post process: file type must be STL:", outPath);
+                    return;
+                }
+
+                String script = String.Format("_-Import \"{0}\" _Enter", outPath);
+                bool good = RhinoApp.RunScript(script, false);
+                if (!good)
+                {
+                    RhinoApp.WriteLine("Post process: output file cannot be imported: {0}", outPath);
+                }
+            }
+
+            catch (Exception ex)
+            {
+                RhinoApp.WriteLine("Error on post process: {0}", ex.Message);
+            }
         }
     }
 }
