@@ -66,7 +66,7 @@ namespace Feather
         {
             try
             {
-                RhinoApp.WriteLine("Post processing of output path {0} is started.", outPath);
+                RhinoApp.WriteLine("Post process is started for {0}", outPath);
                 String ext = Path.GetExtension(outPath);
                 if (null == ext || !ext.ToLower().Equals(".stl", StringComparison.OrdinalIgnoreCase))
                 {
