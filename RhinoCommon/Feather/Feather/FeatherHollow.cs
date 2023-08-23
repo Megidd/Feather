@@ -74,7 +74,7 @@ namespace Feather
                     return;
                 }
 
-                String script = String.Format("_-Import \"{0}\" _Enter", outPath);
+                String script = String.Format("-_Import \"{0}\" _Enter", outPath);
                 bool good = RhinoApp.RunScript(script, false);
                 if (!good)
                 {
