@@ -253,7 +253,7 @@ namespace Feather
 
                 cmd.Start();
 
-                // Begin asynchronous reading.
+                // Begin asynchronous log.
                 cmd.BeginOutputReadLine();
                 cmd.BeginErrorReadLine();
             }
