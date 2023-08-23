@@ -17,11 +17,11 @@ namespace Feather
 
         public override string EnglishName => "FeatherHollow";
 
-        private static string outPath = "output.stl";
+        private static string outPath = System.IO.Path.GetTempPath() + "output.stl"; // Abs path is easier.
 
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
-            string inPath = "input.stl";
+            string inPath = System.IO.Path.GetTempPath() + "input.stl"; // Abs path is easier.
 
             if (Helper.GetInputStl(inPath) == Result.Failure)
             {
