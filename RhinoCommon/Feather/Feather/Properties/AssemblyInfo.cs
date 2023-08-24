@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: PlugInDescription(DescriptionType.Email, "megiddgit@gmail.com")]
 [assembly: PlugInDescription(DescriptionType.Phone, "")]
 [assembly: PlugInDescription(DescriptionType.Fax, "")]
-[assembly: PlugInDescription(DescriptionType.Organization, "www.nano3dtech.com/contact")]
+[assembly: PlugInDescription(DescriptionType.Organization, "www.nano3dtech.com")]
 [assembly: PlugInDescription(DescriptionType.UpdateUrl, "")]
 [assembly: PlugInDescription(DescriptionType.WebSite, "https://github.com/Megidd/Feather")]
 
