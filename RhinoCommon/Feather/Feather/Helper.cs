@@ -82,7 +82,7 @@ namespace Feather
             if (go.ObjectCount == 1)
             {
                 var objClicked = go.Object(0).Object();
-                if (objClicked != obj)
+                if (objClicked.Id != obj.Id)
                 {
                     RhinoApp.WriteLine("Clicked mesh is not the same mesh you clicked before.");
                     return null;
