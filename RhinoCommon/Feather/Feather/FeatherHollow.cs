@@ -28,7 +28,7 @@ namespace Feather
         {
             docCurrent = doc; // Accessed by async post-process code.
             inObj = Helper.GetInputStl(inPath);
-            if ( inObj == null)
+            if (inObj == null)
             {
                 return Result.Failure;
             }
@@ -50,7 +50,10 @@ namespace Feather
             }
 
             // Prepare arguments as text fields.
-            string args = inPath;
+            string args = "";
+            args += "hollow";
+            args += " ";
+            args += inPath;
             args += " ";
             args += infill ? "true" : "false";
             args += " ";
@@ -71,7 +74,7 @@ namespace Feather
         {
             try
             {
-                RhinoApp.WriteLine("Post process is started for {0}", outPath);
+                RhinoApp.WriteLine("Post process started for {0}", outPath);
                 Mesh meshOut = Helper.LoadStlAsMesh(outPath);
 
                 // Run the CheckValidity method on the mesh.
