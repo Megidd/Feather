@@ -54,6 +54,59 @@ namespace Feather
             return obj;
         }
 
+        public static Point3d? GetPointOnMesh(RhinoObject obj, String message = "Select a point on mesh")
+        {
+            // Validate input
+            if (obj == null || obj.ObjectType != ObjectType.Mesh)
+            {
+                RhinoApp.WriteLine("Invalid mesh object.");
+                return null;
+            }
+
+            Mesh mesh = obj.Geometry as Mesh;
+            if (mesh == null)
+            {
+                RhinoApp.WriteLine("Invalid mesh object.");
+                return null;
+            }
+
+            GetObject go = new GetObject();
+            go.SetCommandPrompt(message);
+            go.GeometryFilter = ObjectType.MeshVertex;
+            go.AcceptNothing(true);
+            go.Get();
+
+            if (go.CommandResult() != Result.Success)
+                return null;
+
+            if (go.ObjectCount == 1)
+            {
+                var objClicked = go.Object(0).Object();
+                if (objClicked != obj)
+                {
+                    RhinoApp.WriteLine("Clicked mesh is not the same mesh you clicked before.");
+                    return null;
+                }
+
+                var pickedPoint = go.Point();
+                if (pickedPoint != null)
+                {
+                    RhinoApp.WriteLine("Picked point: {0}", pickedPoint);
+                    return pickedPoint;
+                }
+                else
+                {
+                    RhinoApp.WriteLine("Failed to get a point on the mesh.");
+                    return null;
+                }
+            }
+            else
+            {
+                RhinoApp.WriteLine("Failed to get a point on the mesh.");
+                return null;
+            }
+        }
+
         public static void SaveAsStl(Mesh mesh, string fileName)
         {
             // Extract vertex buffer and index buffer.

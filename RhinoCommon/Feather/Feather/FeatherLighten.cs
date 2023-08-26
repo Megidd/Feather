@@ -4,6 +4,7 @@ using Rhino.DocObjects;
 using static Feather.Helper;
 using System.IO;
 using System;
+using Rhino.Geometry;
 
 namespace Feather
 {
@@ -33,6 +34,12 @@ namespace Feather
             if (inObj == null)
             {
                 return Result.Failure;
+            }
+
+            Point3d? point = Helper.GetPointOnMesh(inObj);
+            if (point.HasValue)
+            {
+                RhinoApp.WriteLine("Selected point: {0}", point.Value);
             }
 
             // Prepare arguments as text fields.
