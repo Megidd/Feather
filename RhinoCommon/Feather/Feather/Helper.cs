@@ -5,6 +5,7 @@ using Rhino.Geometry;
 using Rhino.Input;
 using Rhino.Input.Custom;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -54,7 +55,7 @@ namespace Feather
             return obj;
         }
 
-        public static Point3d? GetPointOnMesh(RhinoObject obj, String message = "Select a point on mesh")
+        public static List<Point3d> GetPointOnMesh(RhinoObject obj, String message = "Select points on mesh (Esc to cancel)")
         {
             // Validate input
             if (obj == null || obj.ObjectType != ObjectType.Mesh)
@@ -70,23 +71,30 @@ namespace Feather
                 return null;
             }
 
-            GetPoint gp = new GetPoint();
-            gp.SetCommandPrompt(message);
-            gp.Constrain(mesh, false);
-            gp.Get();
+            List<Point3d> points = new List<Point3d>();
 
-            if (gp.CommandResult() != Result.Success)
-                return null;
-
-            var pickedPoint = gp.Point();
-            if (pickedPoint == null || pickedPoint == Point3d.Unset)
+            while (true)
             {
-                RhinoApp.WriteLine("Couldn't get a point on mesh.");
-                return null;
+                GetPoint gp = new GetPoint();
+                gp.SetCommandPrompt(message);
+                gp.Constrain(mesh, false);
+                gp.Get();
+
+                if (gp.CommandResult() != Result.Success)
+                    break; // User cancelled.
+
+                var pickedPoint = gp.Point();
+                if (pickedPoint == null || pickedPoint == Point3d.Unset)
+                {
+                    RhinoApp.WriteLine("Couldn't get a point on mesh.");
+                    continue;
+                }
+
+                RhinoApp.WriteLine("Picked point: {0}", pickedPoint);
+                points.Add(pickedPoint);
             }
 
-            RhinoApp.WriteLine("Picked point: {0}", pickedPoint);
-            return pickedPoint;
+            return points;
         }
 
         public static void SaveAsStl(Mesh mesh, string fileName)

@@ -4,6 +4,7 @@ using Rhino.DocObjects;
 using System.IO;
 using System;
 using Rhino.Geometry;
+using System.Collections.Generic;
 
 namespace Feather
 {
@@ -35,11 +36,15 @@ namespace Feather
                 return Result.Failure;
             }
 
-            Point3d? point = Helper.GetPointOnMesh(inObj);
-            if (point.HasValue)
+            List<Point3d> points = Helper.GetPointOnMesh(inObj);
+            if (points == null || points.Count < 1)
             {
-                RhinoApp.WriteLine("Selected point: {0}", point.Value);
+                RhinoApp.WriteLine("No points are selected");
+                return Result.Failure;
             }
+
+            RhinoApp.WriteLine("Selected points count: {0}", points.Count);
+
 
             // Prepare arguments as text fields.
             string args = "";
