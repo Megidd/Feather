@@ -5,6 +5,7 @@ using System.IO;
 using System;
 using Rhino.Geometry;
 using System.Collections.Generic;
+using System.Text.Json;
 
 namespace Feather
 {
@@ -53,6 +54,12 @@ namespace Feather
             }
 
             RhinoApp.WriteLine("Restraint points count: {0}", restraintPoints.Count);
+
+            string loadJson = JsonSerializer.Serialize(loadPoints);
+            File.WriteAllText(Path.GetTempPath() + "loadPoints.json", loadJson);
+
+            string restraintJson = JsonSerializer.Serialize(restraintPoints);
+            File.WriteAllText(Path.GetTempPath() + "restraintPoints.json", restraintJson);
 
             // Prepare arguments as text fields.
             string args = "";
