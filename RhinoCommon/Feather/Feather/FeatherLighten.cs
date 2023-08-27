@@ -44,6 +44,15 @@ namespace Feather
                 return Result.Failure;
             }
 
+            List<Vector3d> loadNormals = new List<Vector3d>();
+            Mesh inMesh = inObj.Geometry as Mesh;
+            for (var i = 0; i < loadPoints.Count; i++)
+            {
+                MeshPoint mp = inMesh.ClosestMeshPoint(loadPoints[i], 0.0);
+                Vector3d normal = inMesh.NormalAt(mp);
+                loadNormals.Add(normal);
+            }
+
             RhinoApp.WriteLine("Load/force points count: {0}", loadPoints.Count);
 
             List<Point3d> restraintPoints = Helper.GetPointOnMesh(inObj, "Select restraint points on mesh (Esc to cancel)");
@@ -69,6 +78,10 @@ namespace Feather
             string loadPth = Path.GetTempPath() + "loadPoints.json";
             string loadJson = JsonSerializer.Serialize(loadPoints);
             File.WriteAllText(loadPth, loadJson);
+
+            string loadNormalsPth = Path.GetTempPath() + "loadNormals.json";
+            string loadNormalsJson = JsonSerializer.Serialize(loadNormals);
+            File.WriteAllText(loadNormalsPth, loadNormalsJson);
 
             string restraintPth = Path.GetTempPath() + "restraintPoints.json";
             string restraintJson = JsonSerializer.Serialize(restraintPoints);
