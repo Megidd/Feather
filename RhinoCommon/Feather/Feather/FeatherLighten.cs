@@ -43,8 +43,16 @@ namespace Feather
                 return Result.Failure;
             }
 
-            RhinoApp.WriteLine("Selected points count: {0}", loadPoints.Count);
+            RhinoApp.WriteLine("Load/force points count: {0}", loadPoints.Count);
 
+            List<Point3d> restraintPoints = Helper.GetPointOnMesh(inObj, "Select restraint points on mesh (Esc to cancel)");
+            if (restraintPoints == null || restraintPoints.Count < 1)
+            {
+                RhinoApp.WriteLine("No points are selected");
+                return Result.Failure;
+            }
+
+            RhinoApp.WriteLine("Restraint points count: {0}", restraintPoints.Count);
 
             // Prepare arguments as text fields.
             string args = "";
