@@ -36,14 +36,14 @@ namespace Feather
                 return Result.Failure;
             }
 
-            List<Point3d> points = Helper.GetPointOnMesh(inObj);
-            if (points == null || points.Count < 1)
+            List<Point3d> loadPoints = Helper.GetPointOnMesh(inObj, "Select load/force points on mesh (Esc to cancel)");
+            if (loadPoints == null || loadPoints.Count < 1)
             {
                 RhinoApp.WriteLine("No points are selected");
                 return Result.Failure;
             }
 
-            RhinoApp.WriteLine("Selected points count: {0}", points.Count);
+            RhinoApp.WriteLine("Selected points count: {0}", loadPoints.Count);
 
 
             // Prepare arguments as text fields.
