@@ -1,7 +1,6 @@
 ﻿using Rhino;
 using Rhino.Commands;
 using Rhino.DocObjects;
-using static Feather.Helper;
 using System.IO;
 using System;
 using Rhino.Geometry;

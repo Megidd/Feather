@@ -70,41 +70,23 @@ namespace Feather
                 return null;
             }
 
-            GetObject go = new GetObject();
-            go.SetCommandPrompt(message);
-            go.GeometryFilter = ObjectType.MeshVertex;
-            go.AcceptNothing(true);
-            go.Get();
+            GetPoint gp = new GetPoint();
+            gp.SetCommandPrompt(message);
+            gp.Constrain(mesh, false);
+            gp.Get();
 
-            if (go.CommandResult() != Result.Success)
+            if (gp.CommandResult() != Result.Success)
                 return null;
 
-            if (go.ObjectCount == 1)
+            var pickedPoint = gp.Point();
+            if (pickedPoint == null || pickedPoint == Point3d.Unset)
             {
-                var objClicked = go.Object(0).Object();
-                if (objClicked.Id != obj.Id)
-                {
-                    RhinoApp.WriteLine("Clicked mesh is not the same mesh you clicked before.");
-                    return null;
-                }
-
-                var pickedPoint = go.Point();
-                if (pickedPoint != null)
-                {
-                    RhinoApp.WriteLine("Picked point: {0}", pickedPoint);
-                    return pickedPoint;
-                }
-                else
-                {
-                    RhinoApp.WriteLine("Failed to get a point on the mesh.");
-                    return null;
-                }
-            }
-            else
-            {
-                RhinoApp.WriteLine("Failed to get a point on the mesh.");
+                RhinoApp.WriteLine("Couldn't get a point on mesh.");
                 return null;
             }
+
+            RhinoApp.WriteLine("Picked point: {0}", pickedPoint);
+            return pickedPoint;
         }
 
         public static void SaveAsStl(Mesh mesh, string fileName)
