@@ -55,6 +55,17 @@ namespace Feather
 
             RhinoApp.WriteLine("Restraint points count: {0}", restraintPoints.Count);
 
+            var specs = new Dictionary<string, double>
+            {
+                ["massDensity"] = 7.85e-9,
+                ["youngModulus"] = 210000,
+                ["poissonRatio"] = 0.3,
+                ["gravityDirectionX"] = 0,
+                ["gravityDirectionY"] = 0,
+                ["gravityDirectionZ"] = -1,
+                ["gravityMagnitude"] = 9810,
+            };
+
             string loadPth = Path.GetTempPath() + "loadPoints.json";
             string loadJson = JsonSerializer.Serialize(loadPoints);
             File.WriteAllText(loadPth, loadJson);
@@ -62,6 +73,10 @@ namespace Feather
             string restraintPth = Path.GetTempPath() + "restraintPoints.json";
             string restraintJson = JsonSerializer.Serialize(restraintPoints);
             File.WriteAllText(restraintPth, restraintJson);
+
+            string specsPth = Path.GetTempPath() + "specs.json";
+            string specsJson = JsonSerializer.Serialize(specs);
+            File.WriteAllText(specsPth, specsJson);
 
             // Prepare arguments as text fields.
             string args = "";
@@ -72,6 +87,8 @@ namespace Feather
             args += loadPth;
             args += " ";
             args += restraintPth;
+            args += " ";
+            args += specsPth;
 
             Helper.RunLogic(args, PostProcess);
 
