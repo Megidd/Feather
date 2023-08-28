@@ -99,6 +99,8 @@ namespace Feather
             args += " ";
             args += loadPth;
             args += " ";
+            args += loadNormalsJson;
+            args += " ";
             args += restraintPth;
             args += " ";
             args += specsPth;
