@@ -76,6 +76,12 @@ namespace Feather
                 ["resolution"] = 50,
                 ["layerStart"] = -1, // Negative means all layers.
                 ["layerEnd"] = -1, // Negative means all layers.
+                ["Tet4"] = 0,
+                ["Tet10"] = 0,
+                ["Hex8"] = 0,
+                ["Hex20"] = 0,
+                ["Hex8Tet4"] = 1,
+                ["Hex20Tet10"] = 0,
             };
 
             string loadPth = Path.GetTempPath() + "loadPoints.json";
