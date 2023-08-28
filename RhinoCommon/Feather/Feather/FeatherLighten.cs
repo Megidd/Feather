@@ -73,6 +73,9 @@ namespace Feather
                 ["gravityDirectionY"] = 0,
                 ["gravityDirectionZ"] = -1,
                 ["gravityMagnitude"] = 9810,
+                ["resolution"] = 50,
+                ["layerStart"] = -1, // Negative means all layers.
+                ["layerEnd"] = -1, // Negative means all layers.
             };
 
             string loadPth = Path.GetTempPath() + "loadPoints.json";
