@@ -67,26 +67,21 @@ namespace Feather
 
             RhinoApp.WriteLine("Restraint points count: {0}", restraintPoints.Count);
 
-            var specs = new Dictionary<string, double>
-            {
-                ["massDensity"] = 7.85e-9,
-                ["youngModulus"] = 210000,
-                ["poissonRatio"] = 0.3,
-                ["gravityConsidered"] = 1, // 0 or 1
-                ["gravityDirectionX"] = 0,
-                ["gravityDirectionY"] = 0,
-                ["gravityDirectionZ"] = -1,
-                ["gravityMagnitude"] = 9810,
-                ["resolution"] = 50,
-                ["layerStart"] = -1, // Negative means all layers.
-                ["layerEnd"] = -1, // Negative means all layers.
-                ["Tet4"] = 0,
-                ["Tet10"] = 0,
-                ["Hex8"] = 0,
-                ["Hex20"] = 0,
-                ["Hex8Tet4"] = 1,
-                ["Hex20Tet10"] = 0,
-            };
+            Dictionary<string, dynamic> specs = new Dictionary<string, dynamic>();
+            specs.Add("massDensity", 7.85e-9);
+            specs.Add("youngModulus", 210000);
+            specs.Add("poissonRatio", 0.3);
+            specs.Add("gravityConsidered", false);
+            specs.Add("gravityDirectionX", 0);
+            specs.Add("gravityDirectionY", 0);
+            specs.Add("gravityDirectionZ", -1);
+            specs.Add("gravityMagnitude", 9810);
+            specs.Add("resolution", 50);
+            specs.Add("layersAllConsidered", true);
+            specs.Add("layerStart", -1);
+            specs.Add("layerEnd", -1);
+            specs.Add("NonlinearConsidered", false);
+            specs.Add("ExactSurfaceConsidered", true);
 
             string loadPth = Path.GetTempPath() + "loadPoints.json";
             string loadJson = JsonSerializer.Serialize(loadPoints);
