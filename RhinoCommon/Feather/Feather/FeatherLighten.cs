@@ -72,6 +72,7 @@ namespace Feather
                 ["massDensity"] = 7.85e-9,
                 ["youngModulus"] = 210000,
                 ["poissonRatio"] = 0.3,
+                ["gravityConsidered"] = 1, // 0 or 1
                 ["gravityDirectionX"] = 0,
                 ["gravityDirectionY"] = 0,
                 ["gravityDirectionZ"] = -1,
