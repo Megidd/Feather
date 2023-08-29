@@ -53,6 +53,9 @@ namespace Feather
                 loadNormals.Add(normal);
             }
 
+            // Load magnitude will be estimated by the 3D model weight and impact velocity.
+            //Double loadMagnitude = Helper.GetDoubleFromUser();
+
             RhinoApp.WriteLine("Load/force points count: {0}", loadPoints.Count);
 
             List<Point3d> restraintPoints = Helper.GetPointOnMesh(inObj, "Select restraint points on mesh (Esc to cancel)");

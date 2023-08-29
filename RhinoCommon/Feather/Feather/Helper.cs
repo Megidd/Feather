@@ -410,5 +410,29 @@ namespace Feather
             // If all face vertex indices are valid, return false
             return false;
         }
+
+        public static double GetDoubleFromUser(double defaultValue, double lowerLimit, double upperLimit, string message)
+        {
+            // Create a GetNumber object
+            GetNumber gn = new GetNumber();
+            gn.SetLowerLimit(lowerLimit, false);
+            gn.SetUpperLimit(upperLimit, false);
+            gn.SetDefaultNumber(defaultValue);
+            gn.SetCommandPrompt(message);
+
+            // Prompt the user to enter a number
+            GetResult result = gn.Get();
+
+            // Check if the user entered a number
+            switch (result)
+            {
+                case GetResult.Number:
+                    break;
+                default:
+                    return defaultValue;
+            }
+
+            return gn.Number();
+        }
     }
 }
