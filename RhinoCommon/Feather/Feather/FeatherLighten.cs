@@ -68,18 +68,18 @@ namespace Feather
             RhinoApp.WriteLine("Restraint points count: {0}", restraintPoints.Count);
 
             Dictionary<string, dynamic> specs = new Dictionary<string, dynamic>();
-            specs.Add("massDensity", 7.85e-9);
-            specs.Add("youngModulus", 210000);
-            specs.Add("poissonRatio", 0.3);
-            specs.Add("gravityConsidered", false);
-            specs.Add("gravityDirectionX", 0);
-            specs.Add("gravityDirectionY", 0);
-            specs.Add("gravityDirectionZ", -1);
-            specs.Add("gravityMagnitude", 9810);
-            specs.Add("resolution", 50);
-            specs.Add("layersAllConsidered", true);
-            specs.Add("layerStart", -1);
-            specs.Add("layerEnd", -1);
+            specs.Add("MassDensity", 7.85e-9);
+            specs.Add("YoungModulus", 210000);
+            specs.Add("PoissonRatio", 0.3);
+            specs.Add("GravityConsidered", false);
+            specs.Add("GravityDirectionX", 0);
+            specs.Add("GravityDirectionY", 0);
+            specs.Add("GravityDirectionZ", -1);
+            specs.Add("GravityMagnitude", 9810);
+            specs.Add("Resolution", 50);
+            specs.Add("LayersAllConsidered", true);
+            specs.Add("LayerStart", -1);
+            specs.Add("LayerEnd", -1);
             specs.Add("NonlinearConsidered", false);
             specs.Add("ExactSurfaceConsidered", true);
 
