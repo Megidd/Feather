@@ -37,8 +37,6 @@ namespace Feather
                 return Result.Failure;
             }
 
-            uint resolution = Helper.GetUint32FromUser("Enter number of voxels (3D pixels) along the longest axis of 3D model", 50, 10, 100);
-
             List<Point3d> loadPoints = Helper.GetPointOnMesh(inObj, "Select load/force points on mesh (Esc to cancel)");
             if (loadPoints == null || loadPoints.Count < 1)
             {
@@ -90,7 +88,7 @@ namespace Feather
             specs.Add("GravityDirectionY", 0);
             specs.Add("GravityDirectionZ", -1);
             specs.Add("GravityMagnitude", 9810);
-            specs.Add("Resolution", resolution);
+            specs.Add("Resolution", 50);
             specs.Add("LayersAllConsidered", true);
             specs.Add("LayerStart", -1);
             specs.Add("LayerEnd", -1);
