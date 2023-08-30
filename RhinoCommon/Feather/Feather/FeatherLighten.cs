@@ -27,6 +27,7 @@ namespace Feather
         private static RhinoDoc docCurrent; // Accessed by async post-process code.
         private static RhinoObject inObj = null; // Input object.
         private static string inPath = Path.GetTempPath() + "input.stl"; // Input object to be saved as STL.
+        private static string resultPath = Path.GetTempPath() + "result.inp"; // Consumable by FEA.
 
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
@@ -53,10 +54,24 @@ namespace Feather
                 loadNormals.Add(normal);
             }
 
-            // Load magnitude will be estimated by the 3D model weight and impact velocity.
-            //Double loadMagnitude = Helper.GetDoubleFromUser();
+            // TODO: Load magnitude will be estimated by the 3D model weight and impact velocity.
+            Double loadMagnitude = Helper.GetDoubleFromUser(10, 5, 100, "Enter your estimation of load/force/impact magnitude. It doesn't have to be exact, just a rough estimation");
 
             RhinoApp.WriteLine("Load/force points count: {0}", loadPoints.Count);
+
+            List<Load> loads = new List<Load>();
+            for (var i = 0; i < loadPoints.Count; i++)
+            {
+                Load load = new Load();
+                load.LocX = loadPoints[i].X;
+                load.LocY = loadPoints[i].Y;
+                load.LocZ = loadPoints[i].Z;
+                bool good = loadNormals[i].Unitize();
+                if (!good) RhinoApp.WriteLine("Warning: cannot normalize the load direction: {0}", loadNormals[i]);
+                load.MagX = loadNormals[i].X * loadMagnitude;
+                load.MagY = loadNormals[i].Y * loadMagnitude;
+                load.MagZ = loadNormals[i].Z * loadMagnitude;
+            }
 
             List<Point3d> restraintPoints = Helper.GetPointOnMesh(inObj, "Select restraint points on mesh (Esc to cancel)");
             if (restraintPoints == null || restraintPoints.Count < 1)
@@ -80,6 +95,7 @@ namespace Feather
                 restraints.Add(restraint);
             }
 
+
             Dictionary<string, dynamic> specs = new Dictionary<string, dynamic>();
             specs.Add("MassDensity", 7.85e-9);
             specs.Add("YoungModulus", 210000);
@@ -95,13 +111,9 @@ namespace Feather
             specs.Add("NonlinearConsidered", false);
             specs.Add("ExactSurfaceConsidered", true);
 
-            string loadPth = Path.GetTempPath() + "loadPoints.json";
-            string loadJson = JsonSerializer.Serialize(loadPoints);
+            string loadPth = Path.GetTempPath() + "loads.json";
+            string loadJson = JsonSerializer.Serialize(loads);
             File.WriteAllText(loadPth, loadJson);
-
-            string loadNormalsPth = Path.GetTempPath() + "loadNormals.json";
-            string loadNormalsJson = JsonSerializer.Serialize(loadNormals);
-            File.WriteAllText(loadNormalsPth, loadNormalsJson);
 
             string restraintPth = Path.GetTempPath() + "restraints.json";
             string restraintJson = JsonSerializer.Serialize(restraints);
@@ -117,15 +129,15 @@ namespace Feather
             args += " ";
             args += inPath;
             args += " ";
+            args += specsPth;
+            args += " ";
             args += loadPth;
             args += " ";
-            args += loadNormalsJson;
-            args += " ";
             args += restraintPth;
-            args += " ";
-            args += specsPth;
+            args = args + " ";
+            args += resultPath;
 
-            Helper.RunLogic(args, PostProcess);
+            Helper.RunLogic("finite_elements.exe", args, PostProcess);
 
             RhinoApp.WriteLine("Process started. Please wait...");
 

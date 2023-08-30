@@ -63,7 +63,7 @@ namespace Feather
             args += " ";
             args += outPath;
 
-            Helper.RunLogic(args, PostProcess);
+            Helper.RunLogic("Cotton.exe", args, PostProcess);
 
             RhinoApp.WriteLine("Process is started. Please wait...");
 

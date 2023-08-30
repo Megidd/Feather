@@ -274,14 +274,14 @@ namespace Feather
         private static StringBuilder cmdLog;
         private static Process cmd;
         public delegate void PostProcess(object sender, EventArgs e);
-        public static void RunLogic(string args, PostProcess pp)
+        public static void RunLogic(string exePath, string args, PostProcess pp)
         {
             cmdLog = new StringBuilder();
             cmd = new Process();
 
             try
             {
-                cmd.StartInfo.FileName = "Cotton.exe";
+                cmd.StartInfo.FileName = exePath;
                 cmd.StartInfo.Arguments = args;
                 cmd.StartInfo.UseShellExecute = false;
                 cmd.StartInfo.CreateNoWindow = true;
