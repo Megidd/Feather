@@ -85,6 +85,7 @@ namespace Feather
                 load.MagX = loadNormals[i].X * loadMagnitude;
                 load.MagY = loadNormals[i].Y * loadMagnitude;
                 load.MagZ = loadNormals[i].Z * loadMagnitude;
+                loads.Add(load);
             }
 
             List<Point3d> restraintPoints = Helper.GetPointOnMesh(inObj, "Select restraint points on mesh (Esc to cancel)");
