@@ -38,6 +38,20 @@ namespace Feather
                 return Result.Failure;
             }
 
+            uint precision = Helper.GetUint32FromUser("Enter precision of computation. It highly affects the speed. VeryLow=1, Low=2, Medium=3, High=4, VeryHigh=5", 3, 1, 5);
+            switch (precision)
+            {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                    break;
+                default:
+                    RhinoApp.WriteLine("Precision must be 1, 2, 3, 4, or 5 i.e. VeryLow=1, Low=2, Medium=3, High=4, VeryHigh=5");
+                    return Result.Failure;
+            }
+
             List<Point3d> loadPoints = Helper.GetPointOnMesh(inObj, "Select load/force points on mesh (Esc to cancel)");
             if (loadPoints == null || loadPoints.Count < 1)
             {
@@ -104,7 +118,7 @@ namespace Feather
             specs.Add("GravityDirectionY", 0);
             specs.Add("GravityDirectionZ", -1);
             specs.Add("GravityMagnitude", 9810);
-            specs.Add("Resolution", 50);
+            specs.Add("Resolution", precision*30.0); // Resolution is voxels count on longest axis of AABB. TODO: Calibrate?
             specs.Add("LayersAllConsidered", true);
             specs.Add("LayerStart", -1);
             specs.Add("LayerEnd", -1);
