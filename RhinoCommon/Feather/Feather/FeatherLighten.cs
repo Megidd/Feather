@@ -74,6 +74,19 @@ namespace Feather
 
             RhinoApp.WriteLine("Restraint points count: {0}", restraintPoints.Count);
 
+            List<Restraint> restraints = new List<Restraint>();
+            for (var i = 0; i < restraintPoints.Count; i++)
+            {
+                Restraint restraint = new Restraint();
+                restraint.LocX = restraintPoints[i].X;
+                restraint.LocY = restraintPoints[i].Y;
+                restraint.LocZ = restraintPoints[i].Z;
+                restraint.IsFixedX = true;
+                restraint.IsFixedY = true;
+                restraint.IsFixedZ = true;
+                restraints.Add(restraint);
+            }
+
             Dictionary<string, dynamic> specs = new Dictionary<string, dynamic>();
             specs.Add("MassDensity", 7.85e-9);
             specs.Add("YoungModulus", 210000);
@@ -97,8 +110,8 @@ namespace Feather
             string loadNormalsJson = JsonSerializer.Serialize(loadNormals);
             File.WriteAllText(loadNormalsPth, loadNormalsJson);
 
-            string restraintPth = Path.GetTempPath() + "restraintPoints.json";
-            string restraintJson = JsonSerializer.Serialize(restraintPoints);
+            string restraintPth = Path.GetTempPath() + "restraints.json";
+            string restraintJson = JsonSerializer.Serialize(restraints);
             File.WriteAllText(restraintPth, restraintJson);
 
             string specsPth = Path.GetTempPath() + "specs.json";
@@ -138,5 +151,25 @@ namespace Feather
                 RhinoApp.WriteLine("Error on post process: {0}", ex.Message);
             }
         }
+    }
+
+    public class Restraint
+    {
+        public double LocX { get; set; }
+        public double LocY { get; set; }
+        public double LocZ { get; set; }
+        public bool IsFixedX { get; set; }
+        public bool IsFixedY { get; set; }
+        public bool IsFixedZ { get; set; }
+    }
+
+    public class Load
+    {
+        public double LocX { get; set; }
+        public double LocY { get; set; }
+        public double LocZ { get; set; }
+        public double MagX { get; set; }
+        public double MagY { get; set; }
+        public double MagZ { get; set; }
     }
 }
