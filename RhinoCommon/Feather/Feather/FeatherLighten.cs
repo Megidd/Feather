@@ -71,7 +71,6 @@ namespace Feather
             specs.Add("MassDensity", 7.85e-9);
             specs.Add("YoungModulus", 210000);
             specs.Add("PoissonRatio", 0.3);
-            specs.Add("GravityConsidered", false);
             specs.Add("GravityDirectionX", 0);
             specs.Add("GravityDirectionY", 0);
             specs.Add("GravityDirectionZ", -1);
