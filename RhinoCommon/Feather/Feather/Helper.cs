@@ -241,24 +241,18 @@ namespace Feather
                 if (getNumberResult == Result.Cancel)
                 {
                     RhinoApp.WriteLine("Canceled by user.");
-                    return uint.MaxValue;
+                    return defaultValue;
                 }
                 else if (getNumberResult == Result.Success)
                 {
                     result = (uint)doubleResult;
                     if (result < lowerLimit || result > upperLimit)
-                    {
-                        RhinoApp.WriteLine("Out of range. Min: {0} Max: {1}", lowerLimit, upperLimit);
-                        return uint.MaxValue;
-                    }
+                        RhinoApp.WriteLine("Input out of range.");
                     else
                         return result;
                 }
                 else
-                {
                     RhinoApp.WriteLine("Invalid input.");
-                    return uint.MaxValue;
-                }
             }
         }
 
