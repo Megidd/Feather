@@ -125,8 +125,6 @@ namespace Feather
 
             // Prepare arguments as text fields.
             string args = "";
-            args += "lighten";
-            args += " ";
             args += inPath;
             args += " ";
             args += specsPth;
@@ -134,7 +132,7 @@ namespace Feather
             args += loadPth;
             args += " ";
             args += restraintPth;
-            args = args + " ";
+            args += " ";
             args += resultPath;
 
             Helper.RunLogic("finite_elements.exe", args, PostProcess);
