@@ -125,6 +125,8 @@ namespace Feather
 
             // Prepare arguments as text fields.
             string args = "";
+            args += "lighten";
+            args += " ";
             args += inPath;
             args += " ";
             args += specsPth;
@@ -135,7 +137,7 @@ namespace Feather
             args += " ";
             args += resultPath;
 
-            Helper.RunLogic("finite_elements.exe", args, PostProcess);
+            Helper.RunLogic("Cotton.exe", args, PostProcess);
 
             RhinoApp.WriteLine("Process started. Please wait...");
 
