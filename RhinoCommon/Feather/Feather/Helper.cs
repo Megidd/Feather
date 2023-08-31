@@ -170,15 +170,15 @@ namespace Feather
 
                     if (unit != Helper.unitOfStlFile)
                     {
-                        x1 = ConvertUnitToMillimeter(x1);
-                        y1 = ConvertUnitToMillimeter(y1);
-                        z1 = ConvertUnitToMillimeter(z1);
-                        x2 = ConvertUnitToMillimeter(x2);
-                        y2 = ConvertUnitToMillimeter(y2);
-                        z2 = ConvertUnitToMillimeter(z2);
-                        x3 = ConvertUnitToMillimeter(x3);
-                        y3 = ConvertUnitToMillimeter(y3);
-                        z3 = ConvertUnitToMillimeter(z3);
+                        x1 = ConvertUnit(x1);
+                        y1 = ConvertUnit(y1);
+                        z1 = ConvertUnit(z1);
+                        x2 = ConvertUnit(x2);
+                        y2 = ConvertUnit(y2);
+                        z2 = ConvertUnit(z2);
+                        x3 = ConvertUnit(x3);
+                        y3 = ConvertUnit(y3);
+                        z3 = ConvertUnit(z3);
                     }
 
                     // Compute the normal vector of the triangle
@@ -217,7 +217,7 @@ namespace Feather
             }
         }
 
-        public static float ConvertUnitToMillimeter(float f)
+        public static float ConvertUnit(float f)
         {
             float mm = f;
 
