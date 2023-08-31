@@ -157,7 +157,7 @@ namespace Feather
 
             RhinoApp.WriteLine("Load/force points count: {0}", loadPoints.Count);
 
-            RhinoApp.WriteLine("Document model unit system is already set to {0}.", doc.ModelUnitSystem.ToString());
+            RhinoApp.WriteLine("Document model unit system is already set to {0}.", doc.ModelUnitSystem.ToString().ToLower());
             bool isUnitAcceptable = Helper.GetYesNoFromUser("Is the above unit acceptable?");
             if (!isUnitAcceptable)
             {
@@ -216,7 +216,6 @@ namespace Feather
             specs.Add("LayerEnd", -1);
             specs.Add("NonlinearConsidered", false);
             specs.Add("ExactSurfaceConsidered", true);
-            specs.Add("ModelUnitSystem", doc.ModelUnitSystem.ToString());
 
             string loadPth = Path.GetTempPath() + "loads.json";
             string loadJson = JsonSerializer.Serialize(loads);
