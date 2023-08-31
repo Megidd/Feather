@@ -38,6 +38,43 @@ namespace Feather
                 return Result.Failure;
             }
 
+            double MassDensity = 7.85e-9;
+            double YoungModulus = 210000;
+            double PoissonRatio = 0.3;
+
+            uint metalType = Helper.GetUint32FromUser("Enter material/metal type. Gold=1, Silver=2, Platinum=3, Copper=4, Other=5", 3, 1, 5);
+            switch (metalType)
+            {
+                case 1:
+                    MassDensity = 7.85e-9; // TODO: Actual value.
+                    YoungModulus = 210000;
+                    PoissonRatio = 0.3;
+                    break;
+                case 2:
+                    MassDensity = 7.85e-9;
+                    YoungModulus = 210000;
+                    PoissonRatio = 0.3;
+                    break;
+                case 3:
+                    MassDensity = 7.85e-9;
+                    YoungModulus = 210000;
+                    PoissonRatio = 0.3;
+                    break;
+                case 4:
+                    MassDensity = 7.85e-9;
+                    YoungModulus = 210000;
+                    PoissonRatio = 0.3;
+                    break;
+                case 5:
+                    MassDensity = 7.85e-9;
+                    YoungModulus = 210000;
+                    PoissonRatio = 0.3;
+                    break;
+                default:
+                    RhinoApp.WriteLine("It's out of range");
+                    return Result.Failure;
+            }
+
             // NOTE: Logic will estimate it by 3D model weight and impact velocity. Don't worry about it.
             // Unit of measurement is Newton (N).
             Double loadMagnitude = 0;
@@ -71,7 +108,7 @@ namespace Feather
                     loadMagnitude = 800;
                     break;
                 default:
-                    RhinoApp.WriteLine("It must be from 1 to 8");
+                    RhinoApp.WriteLine("It's out of range");
                     return Result.Failure;
             }
 
@@ -159,13 +196,13 @@ namespace Feather
 
 
             Dictionary<string, dynamic> specs = new Dictionary<string, dynamic>();
-            specs.Add("MassDensity", 7.85e-9);
-            specs.Add("YoungModulus", 210000);
-            specs.Add("PoissonRatio", 0.3);
+            specs.Add("MassDensity", MassDensity);
+            specs.Add("YoungModulus", YoungModulus);
+            specs.Add("PoissonRatio", PoissonRatio);
             specs.Add("GravityDirectionX", 0);
             specs.Add("GravityDirectionY", 0);
             specs.Add("GravityDirectionZ", -1);
-            specs.Add("GravityMagnitude", 9810);
+            specs.Add("GravityMagnitude", 9810); // TODO: Make sure about units of measurement.
             specs.Add("Resolution", resolution);
             specs.Add("LayersAllConsidered", true);
             specs.Add("LayerStart", -1);
