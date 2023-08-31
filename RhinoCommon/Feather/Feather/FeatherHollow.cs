@@ -27,7 +27,7 @@ namespace Feather
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
             docCurrent = doc; // Accessed by async post-process code.
-            inObj = Helper.GetInputStl(inPath);
+            inObj = Helper.GetInputStl(doc.ModelUnitSystem, inPath);
             if (inObj == null)
             {
                 return Result.Failure;

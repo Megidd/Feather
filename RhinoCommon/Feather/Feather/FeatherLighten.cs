@@ -217,6 +217,8 @@ namespace Feather
             specs.Add("LayerEnd", -1);
             specs.Add("NonlinearConsidered", false);
             specs.Add("ExactSurfaceConsidered", true);
+            specs.Add("ModelUnitSystem", doc.ModelUnitSystem.ToString());
+            specs.Add("ModelUnitSystemOfSavedStlFile", UnitSystem.Millimeters.ToString());
 
             string loadPth = Path.GetTempPath() + "loads.json";
             string loadJson = JsonSerializer.Serialize(loads);
