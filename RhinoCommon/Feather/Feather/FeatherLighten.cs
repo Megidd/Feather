@@ -42,8 +42,8 @@ namespace Feather
             double YoungModulus = 210000;
             double PoissonRatio = 0.3;
 
-            uint metalType = Helper.GetUint32FromUser("Enter material/metal type. Gold=1, Silver=2, Platinum=3, Copper=4, Other=5", 3, 1, 5);
-            switch (metalType)
+            uint materialProps = Helper.GetUint32FromUser("Enter material/metal type. Gold=1, Silver=2, Platinum=3, Copper=4, Other=5", 3, 1, 5);
+            switch (materialProps)
             {
                 case 1:
                     MassDensity = 7.85e-9; // TODO: Actual value.
