@@ -38,6 +38,43 @@ namespace Feather
                 return Result.Failure;
             }
 
+            // TODO: Load magnitude will be estimated by the 3D model weight and impact velocity.
+            // Unit of measurement is Newton (N).
+            Double loadMagnitude = 0;
+
+            // https://en.wikipedia.org/wiki/List_of_jewellery_types
+            uint jewelryType = Helper.GetUint32FromUser("Enter jewelry type. Crown=1, Necklace=2, Bracelet/Armlet/Anklet=3, Ring=4, Earring=5, Belly/waist=6, Piercing=7, Other=8", 3, 1, 8);
+            switch (jewelryType)
+            {
+                case 1:
+                    loadMagnitude = 800; // 80Kg or 800N i.e. average adult human weight
+                    break;
+                case 2:
+                    loadMagnitude = 200;
+                    break;
+                case 3:
+                    loadMagnitude = 200;
+                    break;
+                case 4:
+                    loadMagnitude = 200;
+                    break;
+                case 5:
+                    loadMagnitude = 200;
+                    break;
+                case 6:
+                    loadMagnitude = 800;
+                    break;
+                case 7:
+                    loadMagnitude = 200;
+                    break;
+                case 8:
+                    loadMagnitude = 800;
+                    break;
+                default:
+                    RhinoApp.WriteLine("It must be from 1 to 8");
+                    return Result.Failure;
+            }
+
             uint precision = Helper.GetUint32FromUser("Enter precision of computation. It highly affects the speed. VeryLow=1, Low=2, Medium=3, High=4, VeryHigh=5", 3, 1, 5);
             switch (precision)
             {
@@ -67,9 +104,6 @@ namespace Feather
                 Vector3d normal = inMesh.NormalAt(mp);
                 loadNormals.Add(normal);
             }
-
-            // TODO: Load magnitude will be estimated by the 3D model weight and impact velocity.
-            Double loadMagnitude = Helper.GetDoubleFromUser(10, 5, 100, "Enter your estimation of load/force/impact magnitude. It doesn't have to be exact, just a rough estimation");
 
             RhinoApp.WriteLine("Load/force points count: {0}", loadPoints.Count);
 
@@ -119,7 +153,7 @@ namespace Feather
             specs.Add("GravityDirectionY", 0);
             specs.Add("GravityDirectionZ", -1);
             specs.Add("GravityMagnitude", 9810);
-            specs.Add("Resolution", precision*30.0); // Resolution is voxels count on longest axis of AABB. TODO: Calibrate?
+            specs.Add("Resolution", precision * 30.0); // Resolution is voxels count on longest axis of AABB. TODO: Calibrate?
             specs.Add("LayersAllConsidered", true);
             specs.Add("LayerStart", -1);
             specs.Add("LayerEnd", -1);
