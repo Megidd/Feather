@@ -15,6 +15,8 @@ namespace Feather
 {
     internal class Helper
     {
+        public static UnitSystem unitOfStlFile = UnitSystem.Millimeters;
+
         public static RhinoObject GetInputStl(UnitSystem unit, string filename = "mesh.stl")
         {
             RhinoObject obj = GetSingle();
@@ -166,7 +168,7 @@ namespace Feather
                     float y3 = vertexBuffer[indexBuffer[i + 2] * 3 + 1];
                     float z3 = vertexBuffer[indexBuffer[i + 2] * 3 + 2];
 
-                    if (unit != UnitSystem.Millimeters)
+                    if (unit != Helper.unitOfStlFile)
                     {
                         x1 = ConvertUnitToMillimeter(x1);
                         y1 = ConvertUnitToMillimeter(y1);
