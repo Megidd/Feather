@@ -170,15 +170,15 @@ namespace Feather
 
                     if (unit != Helper.unitOfStlFile)
                     {
-                        x1 = ConvertUnit(x1, unit, Helper.unitOfStlFile);
-                        y1 = ConvertUnit(y1, unit, Helper.unitOfStlFile);
-                        z1 = ConvertUnit(z1, unit, Helper.unitOfStlFile);
-                        x2 = ConvertUnit(x2, unit, Helper.unitOfStlFile);
-                        y2 = ConvertUnit(y2, unit, Helper.unitOfStlFile);
-                        z2 = ConvertUnit(z2, unit, Helper.unitOfStlFile);
-                        x3 = ConvertUnit(x3, unit, Helper.unitOfStlFile);
-                        y3 = ConvertUnit(y3, unit, Helper.unitOfStlFile);
-                        z3 = ConvertUnit(z3, unit, Helper.unitOfStlFile);
+                        x1 = UnitConversion.Convert(x1, unit, Helper.unitOfStlFile);
+                        y1 = UnitConversion.Convert(y1, unit, Helper.unitOfStlFile);
+                        z1 = UnitConversion.Convert(z1, unit, Helper.unitOfStlFile);
+                        x2 = UnitConversion.Convert(x2, unit, Helper.unitOfStlFile);
+                        y2 = UnitConversion.Convert(y2, unit, Helper.unitOfStlFile);
+                        z2 = UnitConversion.Convert(z2, unit, Helper.unitOfStlFile);
+                        x3 = UnitConversion.Convert(x3, unit, Helper.unitOfStlFile);
+                        y3 = UnitConversion.Convert(y3, unit, Helper.unitOfStlFile);
+                        z3 = UnitConversion.Convert(z3, unit, Helper.unitOfStlFile);
                     }
 
                     // Compute the normal vector of the triangle
@@ -216,16 +216,6 @@ namespace Feather
                 }
             }
         }
-
-        public static float ConvertUnit(float f, UnitSystem unitI, UnitSystem unitO)
-        {
-            float mm = f;
-
-            // TODO: Convert from unitI to unitO.
-
-            return mm;
-        }
-
 
         public static float GetFloatFromUser(double defaultValue, double lowerLimit, double upperLimit, string message)
         {
