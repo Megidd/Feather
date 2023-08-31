@@ -194,6 +194,7 @@ namespace Feather
                 restraints.Add(restraint);
             }
 
+            RhinoApp.WriteLine("Your unit of measurement is set to {0}.", doc.ModelUnitSystem.ToString().ToLower());
 
             Dictionary<string, dynamic> specs = new Dictionary<string, dynamic>();
             specs.Add("MassDensity", MassDensity);
