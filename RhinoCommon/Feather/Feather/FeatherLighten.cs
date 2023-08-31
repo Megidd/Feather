@@ -102,7 +102,7 @@ namespace Feather
                     return Result.Failure;
             }
 
-            List<Point3d> loadPoints = Helper.GetPointOnMesh(inObj, "Select load/force points on mesh (Esc to cancel)");
+            List<Point3d> loadPoints = Helper.GetPointOnMesh(inObj, "Select some sample points on mesh that are most probable to be under external impact/force/load (Esc/Enter to finish)");
             if (loadPoints == null || loadPoints.Count < 1)
             {
                 RhinoApp.WriteLine("No points are selected");
@@ -135,7 +135,7 @@ namespace Feather
                 loads.Add(load);
             }
 
-            List<Point3d> restraintPoints = Helper.GetPointOnMesh(inObj, "Select restraint points on mesh (Esc to cancel)");
+            List<Point3d> restraintPoints = Helper.GetPointOnMesh(inObj, "Select some sample points on mesh that are most probable to be in contact with human body (Esc/Enter to finish)");
             if (restraintPoints == null || restraintPoints.Count < 1)
             {
                 RhinoApp.WriteLine("No points are selected");
