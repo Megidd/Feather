@@ -38,7 +38,7 @@ namespace Feather
                 return Result.Failure;
             }
 
-            // TODO: Load magnitude will be estimated by the 3D model weight and impact velocity.
+            // NOTE: Logic will estimate it by 3D model weight and impact velocity. Don't worry about it.
             // Unit of measurement is Newton (N).
             Double loadMagnitude = 0;
 
@@ -75,14 +75,27 @@ namespace Feather
                     return Result.Failure;
             }
 
+            // Resolution is voxel (3D pixel) count on longest axis of 3D model AABB.
+            // NOTE: It will be further calibrated by the logic. Don't worry about it.
+            uint resolution = 30;
+
             uint precision = Helper.GetUint32FromUser("Enter precision of computation. It highly affects the speed. VeryLow=1, Low=2, Medium=3, High=4, VeryHigh=5", 3, 1, 5);
             switch (precision)
             {
                 case 1:
+                    resolution = 30;
+                    break;
                 case 2:
+                    resolution = 60;
+                    break;
                 case 3:
+                    resolution = 90;
+                    break;
                 case 4:
+                    resolution = 120;
+                    break;
                 case 5:
+                    resolution = 150;
                     break;
                 default:
                     RhinoApp.WriteLine("Precision must be 1, 2, 3, 4, or 5 i.e. VeryLow=1, Low=2, Medium=3, High=4, VeryHigh=5");
@@ -153,7 +166,7 @@ namespace Feather
             specs.Add("GravityDirectionY", 0);
             specs.Add("GravityDirectionZ", -1);
             specs.Add("GravityMagnitude", 9810);
-            specs.Add("Resolution", precision * 30.0); // Resolution is voxels count on longest axis of AABB. TODO: Calibrate?
+            specs.Add("Resolution", resolution);
             specs.Add("LayersAllConsidered", true);
             specs.Add("LayerStart", -1);
             specs.Add("LayerEnd", -1);
