@@ -15,7 +15,7 @@ namespace Feather
 {
     internal class Helper
     {
-        public static RhinoObject GetInputStl(string filename = "mesh.stl")
+        public static RhinoObject GetInputStl(UnitSystem unit, string filename = "mesh.stl")
         {
             RhinoObject obj = GetSingle();
             if (null == obj || obj.ObjectType != ObjectType.Mesh)
@@ -33,7 +33,7 @@ namespace Feather
             RhinoApp.WriteLine("Number of mesh vertices: {0}", mesh.Vertices.Count);
             RhinoApp.WriteLine("Number of mesh triangles: {0}", mesh.Faces.Count);
 
-            SaveAsStl(mesh, filename);
+            SaveAsStl(unit, mesh, filename);
 
             return obj;
         }
@@ -97,14 +97,14 @@ namespace Feather
             return points;
         }
 
-        public static void SaveAsStl(Mesh mesh, string fileName)
+        public static void SaveAsStl(UnitSystem unit, Mesh mesh, string fileName)
         {
             // Extract vertex buffer and index buffer.
             float[] vertexBuffer;
             int[] indexBuffer;
             GetBuffers(mesh, out vertexBuffer, out indexBuffer);
 
-            SaveBuffersAsStl(vertexBuffer, indexBuffer, fileName);
+            SaveBuffersAsStl(unit, vertexBuffer, indexBuffer, fileName);
         }
 
         public static void GetBuffers(Mesh mesh, out float[] vertexBuffer, out int[] indexBuffer)
@@ -138,7 +138,7 @@ namespace Feather
             }
         }
 
-        public static void SaveBuffersAsStl(float[] vertexBuffer, int[] indexBuffer, string fileName)
+        public static void SaveBuffersAsStl(UnitSystem unit, float[] vertexBuffer, int[] indexBuffer, string fileName)
         {
             // Open the file for writing
             using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
@@ -165,6 +165,19 @@ namespace Feather
                     float x3 = vertexBuffer[indexBuffer[i + 2] * 3];
                     float y3 = vertexBuffer[indexBuffer[i + 2] * 3 + 1];
                     float z3 = vertexBuffer[indexBuffer[i + 2] * 3 + 2];
+
+                    if (unit != UnitSystem.Millimeters)
+                    {
+                        x1 = ConvertUnitToMillimeter(x1);
+                        y1 = ConvertUnitToMillimeter(y1);
+                        z1 = ConvertUnitToMillimeter(z1);
+                        x2 = ConvertUnitToMillimeter(x2);
+                        y2 = ConvertUnitToMillimeter(y2);
+                        z2 = ConvertUnitToMillimeter(z2);
+                        x3 = ConvertUnitToMillimeter(x3);
+                        y3 = ConvertUnitToMillimeter(y3);
+                        z3 = ConvertUnitToMillimeter(z3);
+                    }
 
                     // Compute the normal vector of the triangle
                     float nx = (y2 - y1) * (z3 - z1) - (z2 - z1) * (y3 - y1);
@@ -200,6 +213,15 @@ namespace Feather
                     fileStream.Write(attribute, 0, attribute.Length);
                 }
             }
+        }
+
+        public static float ConvertUnitToMillimeter(float f)
+        {
+            float mm = f;
+
+            // TODO: Convert to millimeter.
+
+            return mm;
         }
 
 
