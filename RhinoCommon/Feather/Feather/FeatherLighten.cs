@@ -157,7 +157,13 @@ namespace Feather
 
             RhinoApp.WriteLine("Load/force points count: {0}", loadPoints.Count);
 
-            RhinoApp.WriteLine("Your unit of measurement is set to {0}.", doc.ModelUnitSystem.ToString().ToLower());
+            RhinoApp.WriteLine("Document model unit system is already set to {0}.", doc.ModelUnitSystem.ToString().ToLower());
+            bool isUnitAcceptable = Helper.GetYesNoFromUser("Is the above unit acceptable?");
+            if (!isUnitAcceptable)
+            {
+                RhinoApp.WriteLine("Please fix the document model unit system and rerun this command.");
+                return Result.Failure;
+            }
 
             List<Load> loads = new List<Load>();
             for (var i = 0; i < loadPoints.Count; i++)
