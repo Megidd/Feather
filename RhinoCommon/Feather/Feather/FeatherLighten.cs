@@ -157,6 +157,8 @@ namespace Feather
 
             RhinoApp.WriteLine("Load/force points count: {0}", loadPoints.Count);
 
+            RhinoApp.WriteLine("Your unit of measurement is set to {0}.", doc.ModelUnitSystem.ToString().ToLower());
+
             List<Load> loads = new List<Load>();
             for (var i = 0; i < loadPoints.Count; i++)
             {
@@ -193,8 +195,6 @@ namespace Feather
                 restraint.IsFixedZ = true;
                 restraints.Add(restraint);
             }
-
-            RhinoApp.WriteLine("Your unit of measurement is set to {0}.", doc.ModelUnitSystem.ToString().ToLower());
 
             Dictionary<string, dynamic> specs = new Dictionary<string, dynamic>();
             specs.Add("MassDensity", MassDensity);
