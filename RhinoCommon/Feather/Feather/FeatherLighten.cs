@@ -161,7 +161,7 @@ namespace Feather
             bool isUnitAcceptable = Helper.GetYesNoFromUser("Is the above unit acceptable?");
             if (!isUnitAcceptable)
             {
-                RhinoApp.WriteLine("Please fix the document model unit system and rerun this command.");
+                RhinoApp.WriteLine("Please fix the document model unit system and re-run this command.");
                 return Result.Failure;
             }
 
