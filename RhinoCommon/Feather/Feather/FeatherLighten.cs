@@ -28,6 +28,7 @@ namespace Feather
         private static RhinoObject inObj = null; // Input object.
         private static string inPath = Path.GetTempPath() + "input.stl"; // Input object to be saved as STL.
         private static string resultPath = Path.GetTempPath() + "result.inp"; // Consumable by FEA.
+        private static string resultInfoPath = Path.GetTempPath() + "result-info.json"; // Info & details.
 
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
@@ -245,6 +246,8 @@ namespace Feather
             args += restraintPth;
             args += " ";
             args += resultPath;
+            args += " ";
+            args += resultInfoPath;
 
             Helper.RunLogic("Cotton.exe", args, PostProcess);
 
