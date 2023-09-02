@@ -211,7 +211,7 @@ namespace Feather
             specs.Add("GravityDirectionX", 0);
             specs.Add("GravityDirectionY", 0);
             specs.Add("GravityDirectionZ", -1);
-            specs.Add("GravityMagnitude", 9810); // TODO: Make sure about units of measurement.
+            specs.Add("GravityMagnitude", UnitConversion.Convert(9.810f, UnitSystem.Meters, Helper.unitOfStlFile));
             specs.Add("Resolution", resolution);
             specs.Add("LayersAllConsidered", true);
             specs.Add("LayerStart", -1);
