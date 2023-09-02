@@ -340,7 +340,9 @@ namespace Feather
             {
                 if (!String.IsNullOrEmpty(e.Data))
                 {
-                    RhinoApp.WriteLine("Process log: {0}", e.Data + Environment.NewLine);
+                    // The external process logs are usually line-by-line.
+                    // So, don't worry about the new line character.
+                    RhinoApp.WriteLine("Process log: {0}", e.Data);
                 }
             }
             catch (Exception ex)
