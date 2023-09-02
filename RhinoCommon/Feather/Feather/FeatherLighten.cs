@@ -269,24 +269,4 @@ namespace Feather
             }
         }
     }
-
-    public class Restraint
-    {
-        public double LocX { get; set; }
-        public double LocY { get; set; }
-        public double LocZ { get; set; }
-        public bool IsFixedX { get; set; }
-        public bool IsFixedY { get; set; }
-        public bool IsFixedZ { get; set; }
-    }
-
-    public class Load
-    {
-        public double LocX { get; set; }
-        public double LocY { get; set; }
-        public double LocZ { get; set; }
-        public double MagX { get; set; }
-        public double MagY { get; set; }
-        public double MagZ { get; set; }
-    }
 }
