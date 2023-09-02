@@ -285,12 +285,10 @@ namespace Feather
             }
         }
 
-        private static StringBuilder cmdLog;
         private static Process cmd;
         public delegate void PostProcess(object sender, EventArgs e);
         public static void RunLogic(string exePath, string args, PostProcess pp)
         {
-            cmdLog = new StringBuilder();
             cmd = new Process();
 
             try
@@ -326,11 +324,6 @@ namespace Feather
         {
             try
             {
-                if (!string.IsNullOrEmpty(cmdLog.ToString()))
-                {
-                    RhinoApp.WriteLine("Process logs:\n\n{0}", cmdLog.ToString());
-                }
-
                 RhinoApp.WriteLine("Process finished.");
                 cmd.Dispose();
             }
@@ -347,7 +340,7 @@ namespace Feather
             {
                 if (!String.IsNullOrEmpty(e.Data))
                 {
-                    cmdLog.Append(e.Data + Environment.NewLine);
+                    RhinoApp.WriteLine("Process log: {0}", e.Data + Environment.NewLine);
                 }
             }
             catch (Exception ex)
