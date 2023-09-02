@@ -165,7 +165,7 @@ namespace Feather
 
             // Prepare arguments as text fields.
             string args = "";
-            args += "lighten";
+            args += "printable";
             args += " ";
             args += inPath;
             args += " ";
