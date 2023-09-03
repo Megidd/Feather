@@ -227,7 +227,7 @@ namespace Feather
             specs.Add("GravityMagnitude", UnitConversion.Convert(9.810f, UnitSystem.Meters, Helper.unitOfStlFile));
             specs.Add("Resolution", resolution);
             specs.Add("LayerByLayerfor3dPrintAnalysis", false);
-            specs.Add("PathResultLayerByLayer", ""); // Layer-by-layer is false, so this isn't needed.
+            specs.Add("LayerByLayerPathResult", ""); // Layer-by-layer is false, so this isn't needed.
             specs.Add("NonlinearConsidered", false);
             specs.Add("ExactSurfaceConsidered", true);
             specs.Add("ModelUnitSystem", doc.ModelUnitSystem.ToString());

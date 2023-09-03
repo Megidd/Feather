@@ -29,7 +29,7 @@ namespace Feather
         private static string resultInfoPath = Path.GetTempPath() + "result-info.json"; // Info & details.
 
         // Must include "#" character as placeholder for layer number.
-        private static string resultLayerByLayerPath = Path.GetTempPath() + "result-layer0-to-layer#.inp";
+        private static string layerByLayerResultPath = Path.GetTempPath() + "result-layer0-to-layer#.inp";
 
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
@@ -160,7 +160,7 @@ namespace Feather
             specs.Add("GravityMagnitude", UnitConversion.Convert(9.810f, UnitSystem.Meters, Helper.unitOfStlFile));
             specs.Add("Resolution", resolution);
             specs.Add("LayerByLayerfor3dPrintAnalysis", true);
-            specs.Add("PathResultLayerByLayer", resultLayerByLayerPath);
+            specs.Add("LayerByLayerPathResult", layerByLayerResultPath);
             specs.Add("NonlinearConsidered", false);
             specs.Add("ExactSurfaceConsidered", true);
             specs.Add("ModelUnitSystem", doc.ModelUnitSystem.ToString());
