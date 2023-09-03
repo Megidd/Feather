@@ -204,7 +204,20 @@ namespace Feather
                 restraints.Add(restraint);
             }
 
+            string loadPth = Path.GetTempPath() + "load-points.json";
+            string loadJson = JsonSerializer.Serialize(loads);
+            File.WriteAllText(loadPth, loadJson);
+
+            string restraintPth = Path.GetTempPath() + "restraint-points.json";
+            string restraintJson = JsonSerializer.Serialize(restraints);
+            File.WriteAllText(restraintPth, restraintJson);
+
             Dictionary<string, dynamic> specs = new Dictionary<string, dynamic>();
+            specs.Add("PathStl", inPath);
+            specs.Add("PathLoadPoints", loadPth);
+            specs.Add("PathRestraintPoints", restraintPth);
+            specs.Add("PathResult", resultPath);
+            specs.Add("PathResultInfo", resultInfoPath);
             specs.Add("MassDensity", MassDensity);
             specs.Add("YoungModulus", YoungModulus);
             specs.Add("PoissonRatio", PoissonRatio);
@@ -221,14 +234,6 @@ namespace Feather
             specs.Add("ModelUnitSystem", doc.ModelUnitSystem.ToString());
             specs.Add("ModelUnitSystemOfSavedStlFile", Helper.unitOfStlFile.ToString());
 
-            string loadPth = Path.GetTempPath() + "loads.json";
-            string loadJson = JsonSerializer.Serialize(loads);
-            File.WriteAllText(loadPth, loadJson);
-
-            string restraintPth = Path.GetTempPath() + "restraints.json";
-            string restraintJson = JsonSerializer.Serialize(restraints);
-            File.WriteAllText(restraintPth, restraintJson);
-
             string specsPth = Path.GetTempPath() + "specs.json";
             string specsJson = JsonSerializer.Serialize(specs);
             File.WriteAllText(specsPth, specsJson);
@@ -237,17 +242,7 @@ namespace Feather
             string args = "";
             args += "lighten";
             args += " ";
-            args += inPath;
-            args += " ";
             args += specsPth;
-            args += " ";
-            args += loadPth;
-            args += " ";
-            args += restraintPth;
-            args += " ";
-            args += resultPath;
-            args += " ";
-            args += resultInfoPath;
 
             Helper.RunLogic("Cotton.exe", args, PostProcess);
 
