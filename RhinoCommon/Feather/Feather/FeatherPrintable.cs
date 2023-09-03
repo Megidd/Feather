@@ -28,6 +28,9 @@ namespace Feather
         private static string resultPath = Path.GetTempPath() + "result.inp"; // Consumable by FEA.
         private static string resultInfoPath = Path.GetTempPath() + "result-info.json"; // Info & details.
 
+        // Must include "#" character as placeholder for layer number.
+        private static string resultLayerByLayerPath = Path.GetTempPath() + "result-layer0-to-layer#.inp";
+
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
             docCurrent = doc; // Accessed by async post-process code.
@@ -156,9 +159,8 @@ namespace Feather
             specs.Add("GravityDirectionZ", +1); // 3D printing by SLA technology is done upside-down.
             specs.Add("GravityMagnitude", UnitConversion.Convert(9.810f, UnitSystem.Meters, Helper.unitOfStlFile));
             specs.Add("Resolution", resolution);
-            specs.Add("LayersAllConsidered", true);
-            specs.Add("LayerStart", -1);
-            specs.Add("LayerEnd", -1);
+            specs.Add("LayerByLayerfor3dPrintAnalysis", true);
+            specs.Add("PathResultLayerByLayer", resultLayerByLayerPath);
             specs.Add("NonlinearConsidered", false);
             specs.Add("ExactSurfaceConsidered", true);
             specs.Add("ModelUnitSystem", doc.ModelUnitSystem.ToString());
