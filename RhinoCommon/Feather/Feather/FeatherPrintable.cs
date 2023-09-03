@@ -113,34 +113,16 @@ namespace Feather
                     return Result.Failure;
             }
 
-            List<Point3d> restraintPoints = Helper.GetPointOnMesh(inObj, "Select sample points on mesh that are attached to print floor (Esc/Enter to finish)");
-            if (restraintPoints == null || restraintPoints.Count < 1)
-            {
-                RhinoApp.WriteLine("No points are selected");
-                return Result.Failure;
-            }
-
-            RhinoApp.WriteLine("Restraint points count: {0}", restraintPoints.Count);
-
-            List<Restraint> restraints = new List<Restraint>();
-            for (var i = 0; i < restraintPoints.Count; i++)
-            {
-                Restraint restraint = new Restraint();
-                restraint.LocX = restraintPoints[i].X;
-                restraint.LocY = restraintPoints[i].Y;
-                restraint.LocZ = restraintPoints[i].Z;
-                restraint.IsFixedX = true;
-                restraint.IsFixedY = true;
-                restraint.IsFixedZ = true;
-                restraints.Add(restraint);
-            }
-
             // Load is empty, since the gravity is the main load while 3D printing.
             List<Load> loads = new List<Load>();
             string loadPth = Path.GetTempPath() + "load-points.json";
             string loadJson = JsonSerializer.Serialize(loads);
             File.WriteAllText(loadPth, loadJson);
 
+            RhinoApp.WriteLine("First voxel layer on Z axis is considered restraint i.e. in contact with 3D print floor.");
+
+            // Restraint is empty, since first voxel layer on Z axis will be in contact with 3D print floor.
+            List <Restraint> restraints = new List<Restraint>();
             string restraintPth = Path.GetTempPath() + "restraint-points.json";
             string restraintJson = JsonSerializer.Serialize(restraints);
             File.WriteAllText(restraintPth, restraintJson);
