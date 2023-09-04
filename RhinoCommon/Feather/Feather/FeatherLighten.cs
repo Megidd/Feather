@@ -225,6 +225,7 @@ namespace Feather
             specs.Add("GravityDirectionY", 0);
             specs.Add("GravityDirectionZ", -1);
             specs.Add("GravityMagnitude", UnitConversion.Convert(9.810f, UnitSystem.Meters, Helper.unitOfStlFile));
+            specs.Add("GravityIsNeeded", false); // Let's not consider gravity. Point loads should be dominant.
             specs.Add("Resolution", resolution);
             specs.Add("NonlinearConsidered", false);
             specs.Add("ExactSurfaceConsidered", true);
