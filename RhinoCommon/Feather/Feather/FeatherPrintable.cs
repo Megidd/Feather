@@ -25,7 +25,8 @@ namespace Feather
         private static RhinoDoc docCurrent; // Accessed by async post-process code.
         private static RhinoObject inObj = null; // Input object.
         private static string inPath = Path.GetTempPath() + "input.stl"; // Input object to be saved as STL.
-        // Result file, consumable by ABAQUS or CalculiX. Must include "#" character as placeholder for layer number.
+        // Result file, consumable by ABAQUS or CalculiX.
+        // Must include "#" character as placeholder for layer number.
         private static string resultPath = Path.GetTempPath() + "result-layer0-to-layer#.inp"; // Consumable by FEA.
         private static string resultInfoPath = Path.GetTempPath() + "result-info.json"; // Info & details.
 
@@ -121,7 +122,7 @@ namespace Feather
 
             Dictionary<string, dynamic> specs = new Dictionary<string, dynamic>();
             specs.Add("PathStl", inPath);
-            specs.Add("PathResult", resultPath);
+            specs.Add("PathResultWithPlaceholder", resultPath);
             specs.Add("PathResultInfo", resultInfoPath);
             specs.Add("MassDensity", MassDensity);
             specs.Add("YoungModulus", YoungModulus);
