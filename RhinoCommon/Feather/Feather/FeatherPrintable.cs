@@ -29,6 +29,7 @@ namespace Feather
         // Must include "#" character as placeholder for layer number.
         private static string resultPath = Path.GetTempPath() + "result-layer0-to-layer#.inp"; // Consumable by FEA.
         private static string resultInfoPath = Path.GetTempPath() + "result-info.json"; // Info & details.
+        private static string logFeaPath = Path.GetTempPath() + "FEA-log.txt";
 
         // Must include "#" character as placeholder for layer number.
         private static string layerByLayerResultPath = Path.GetTempPath() + "result-layer0-to-layer#.inp";
@@ -124,6 +125,7 @@ namespace Feather
             specs.Add("PathStl", inPath);
             specs.Add("PathResultWithPlaceholder", resultPath);
             specs.Add("PathResultInfo", resultInfoPath);
+            specs.Add("PathLogFea", logFeaPath);
             specs.Add("MassDensity", MassDensity);
             specs.Add("YoungModulus", YoungModulus);
             specs.Add("PoissonRatio", PoissonRatio);

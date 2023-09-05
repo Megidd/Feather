@@ -29,6 +29,7 @@ namespace Feather
         private static string inPath = Path.GetTempPath() + "input.stl"; // Input object to be saved as STL.
         private static string resultPath = Path.GetTempPath() + "result.inp"; // Consumable by FEA.
         private static string resultInfoPath = Path.GetTempPath() + "result-info.json"; // Info & details.
+        private static string logFeaPath = Path.GetTempPath() + "FEA-log.txt";
 
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
@@ -218,6 +219,7 @@ namespace Feather
             specs.Add("PathRestraintPoints", restraintPth);
             specs.Add("PathResult", resultPath);
             specs.Add("PathResultInfo", resultInfoPath);
+            specs.Add("PathLogFea", logFeaPath);
             specs.Add("MassDensity", MassDensity);
             specs.Add("YoungModulus", YoungModulus);
             specs.Add("PoissonRatio", PoissonRatio);
