@@ -126,6 +126,7 @@ namespace Feather
             specs.Add("PathResultWithPlaceholder", resultPath);
             specs.Add("PathResultInfo", resultInfoPath);
             specs.Add("PathLogFea", logFeaPath);
+            specs.Add("LayerToStartFea", 3); // FEA will be done after this layer.
             specs.Add("MassDensity", MassDensity);
             specs.Add("YoungModulus", YoungModulus);
             specs.Add("PoissonRatio", PoissonRatio);
