@@ -56,8 +56,10 @@ namespace Feather
                 throw new Exception("unit of STL file must be set to mm");
             }
 
-            double MassDensity = 7.85e-9;
-            double YoungModulus = 210000;
+            // Units of measurement:
+            // https://engineering.stackexchange.com/q/54454/15178
+            double MassDensity = 7.85e-9; // (N*s2/mm4)
+            double YoungModulus = 210000; // MPa (N/mm2)
             double PoissonRatio = 0.3;
 
             uint materialProps = Helper.GetUint32FromUser("Enter material/metal type. Gold=1, Silver=2, Platinum=3, Copper=4, Other=5", 3, 1, 5);
