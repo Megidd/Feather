@@ -54,37 +54,59 @@ namespace Feather
                     return Result.Failure;
                 }
 
-                double MassDensity = 7.85e-9;
-                double YoungModulus = 210000;
+                // Material props are all based on mm, so double-check that STL would be saved by mm.
+                if (Helper.unitOfStlFile != UnitSystem.Millimeters)
+                {
+                    RhinoApp.WriteLine("Unit of STL file must be set to mm but it is {0}", Helper.unitOfStlFile.ToString().ToLower());
+                    throw new Exception("unit of STL file must be set to mm");
+                }
+
+                // STANDARD RESINS
+                // https://formlabs-media.formlabs.com/filer_public/ac/89/ac8963db-f54a-4cac-8fe9-fb740a7b06f1/formlabs-materials-library.pdf
+                // Units of measurement:
+                // https://engineering.stackexchange.com/q/54454/15178
+                double MassDensity = 1250 * 10 ^ -12; // (N*s2/mm4) // Assumed density: 1.15 g/cm3 < X <1.25 g/cm3
+                double YoungModulus = 1.6 * 1000; // MPa (N/mm2)
                 double PoissonRatio = 0.3;
+                double TensileStrength = 38; // MPa (N/mm2)
 
                 uint materialProps = Helper.GetUint32FromUser("3D print resin material type? Very soft=1, Soft=2, Medium=3, Hard=4, Very hard=5", 3, 1, 5);
                 switch (materialProps)
                 {
                     case 1:
-                        MassDensity = 7.85e-9; // TODO: Actual value.
-                        YoungModulus = 210000;
+                        // TODO: Adjust value.
+                        MassDensity = 1250 * 10 ^ -12; // (N*s2/mm4)
+                        YoungModulus = 1.6 * 1000; // MPa (N/mm2)
                         PoissonRatio = 0.3;
+                        TensileStrength = 38; // MPa (N/mm2)
                         break;
                     case 2:
-                        MassDensity = 7.85e-9;
-                        YoungModulus = 210000;
+                        // TODO: Adjust value.
+                        MassDensity = 1250 * 10 ^ -12; // (N*s2/mm4)
+                        YoungModulus = 1.6 * 1000; // MPa (N/mm2)
                         PoissonRatio = 0.3;
+                        TensileStrength = 38; // MPa (N/mm2)
                         break;
                     case 3:
-                        MassDensity = 7.85e-9;
-                        YoungModulus = 210000;
+                        // TODO: Adjust value.
+                        MassDensity = 1250 * 10 ^ -12; // (N*s2/mm4)
+                        YoungModulus = 1.6 * 1000; // MPa (N/mm2)
                         PoissonRatio = 0.3;
+                        TensileStrength = 38; // MPa (N/mm2)
                         break;
                     case 4:
-                        MassDensity = 7.85e-9;
-                        YoungModulus = 210000;
+                        // TODO: Adjust value.
+                        MassDensity = 1250 * 10 ^ -12; // (N*s2/mm4)
+                        YoungModulus = 1.6 * 1000; // MPa (N/mm2)
                         PoissonRatio = 0.3;
+                        TensileStrength = 38; // MPa (N/mm2)
                         break;
                     case 5:
-                        MassDensity = 7.85e-9;
-                        YoungModulus = 210000;
+                        // TODO: Adjust value.
+                        MassDensity = 1250 * 10 ^ -12; // (N*s2/mm4)
+                        YoungModulus = 1.6 * 1000; // MPa (N/mm2)
                         PoissonRatio = 0.3;
+                        TensileStrength = 38; // MPa (N/mm2)
                         break;
                     default:
                         RhinoApp.WriteLine("It's out of range");
@@ -129,9 +151,10 @@ namespace Feather
                 specs.Add("PathResultInfo", resultInfoPath);
                 specs.Add("PathLogFea", logFeaPath);
                 specs.Add("LayerToStartFea", 3); // FEA will be done after this layer.
-                specs.Add("MassDensity", MassDensity);
-                specs.Add("YoungModulus", YoungModulus);
+                specs.Add("MassDensity", MassDensity); // (N*s2/mm4)
+                specs.Add("YoungModulus", YoungModulus); // MPa (N/mm2)
                 specs.Add("PoissonRatio", PoissonRatio);
+                specs.Add("TensileStrength", TensileStrength); // MPa (N/mm2)
                 specs.Add("GravityDirectionX", 0);
                 specs.Add("GravityDirectionY", 0);
                 specs.Add("GravityDirectionZ", +1); // 3D printing by SLA technology is done upside-down.

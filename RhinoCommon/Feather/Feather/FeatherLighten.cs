@@ -49,6 +49,13 @@ namespace Feather
                 return Result.Failure;
             }
 
+            // Material props are all based on mm, so double-check that STL would be saved by mm.
+            if (Helper.unitOfStlFile != UnitSystem.Millimeters)
+            {
+                RhinoApp.WriteLine("Unit of STL file must be set to mm but it is {0}", Helper.unitOfStlFile.ToString().ToLower());
+                throw new Exception("unit of STL file must be set to mm");
+            }
+
             double MassDensity = 7.85e-9;
             double YoungModulus = 210000;
             double PoissonRatio = 0.3;
