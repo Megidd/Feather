@@ -75,35 +75,35 @@ namespace Feather
                 {
                     case 1:
                         // TODO: Adjust value.
-                        MassDensity = 1250 * 10 ^ -12; // (N*s2/mm4)
+                        MassDensity = 1250 * Math.Pow(10, -12); // (N*s2/mm4)
                         YoungModulus = 1.6 * 1000; // MPa (N/mm2)
                         PoissonRatio = 0.3;
                         TensileStrength = 38; // MPa (N/mm2)
                         break;
                     case 2:
                         // TODO: Adjust value.
-                        MassDensity = 1250 * 10 ^ -12; // (N*s2/mm4)
+                        MassDensity = 1250 * Math.Pow(10, -12); // (N*s2/mm4)
                         YoungModulus = 1.6 * 1000; // MPa (N/mm2)
                         PoissonRatio = 0.3;
                         TensileStrength = 38; // MPa (N/mm2)
                         break;
                     case 3:
                         // TODO: Adjust value.
-                        MassDensity = 1250 * 10 ^ -12; // (N*s2/mm4)
+                        MassDensity = 1250 * Math.Pow(10, -12); // (N*s2/mm4)
                         YoungModulus = 1.6 * 1000; // MPa (N/mm2)
                         PoissonRatio = 0.3;
                         TensileStrength = 38; // MPa (N/mm2)
                         break;
                     case 4:
                         // TODO: Adjust value.
-                        MassDensity = 1250 * 10 ^ -12; // (N*s2/mm4)
+                        MassDensity = 1250 * Math.Pow(10, -12); // (N*s2/mm4)
                         YoungModulus = 1.6 * 1000; // MPa (N/mm2)
                         PoissonRatio = 0.3;
                         TensileStrength = 38; // MPa (N/mm2)
                         break;
                     case 5:
                         // TODO: Adjust value.
-                        MassDensity = 1250 * 10 ^ -12; // (N*s2/mm4)
+                        MassDensity = 1250 * Math.Pow(10, -12); // (N*s2/mm4)
                         YoungModulus = 1.6 * 1000; // MPa (N/mm2)
                         PoissonRatio = 0.3;
                         TensileStrength = 38; // MPa (N/mm2)
