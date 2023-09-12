@@ -65,7 +65,7 @@ namespace Feather
                 // https://formlabs-media.formlabs.com/filer_public/ac/89/ac8963db-f54a-4cac-8fe9-fb740a7b06f1/formlabs-materials-library.pdf
                 // Units of measurement:
                 // https://engineering.stackexchange.com/q/54454/15178
-                double MassDensity = 1250 * 10 ^ -12; // (N*s2/mm4) // Assumed density: 1.15 g/cm3 < X <1.25 g/cm3
+                double MassDensity = 1250 * Math.Pow(10, -12); // (N*s2/mm4) // Assumed density: 1.15 g/cm3 < X <1.25 g/cm3
                 double YoungModulus = 1.6 * 1000; // MPa (N/mm2)
                 double PoissonRatio = 0.3;
                 double TensileStrength = 38; // MPa (N/mm2)
