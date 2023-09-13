@@ -32,9 +32,6 @@ namespace Feather
                 return null;
             }
 
-            RhinoApp.WriteLine("Number of mesh vertices: {0}", mesh.Vertices.Count);
-            RhinoApp.WriteLine("Number of mesh triangles: {0}", mesh.Faces.Count);
-
             SaveAsStl(unit, mesh, filename);
 
             return obj;
@@ -113,9 +110,9 @@ namespace Feather
         {
             // Convert quads to triangles
             bool converted = mesh.Faces.ConvertQuadsToTriangles();
-            if (converted)
+            if (!converted)
             {
-                RhinoApp.WriteLine("Mesh contains quads. They are converted to triangles.");
+                RhinoApp.WriteLine("Mesh quads couldn't be converted to triangles.");
             }
 
             // Get vertex buffer
