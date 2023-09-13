@@ -306,6 +306,7 @@ namespace Feather
                 // https://www.rhino3d.com/7/system-requirements/
                 if (System.Environment.OSVersion.Version.Major >= 6)
                 {
+                    // Run with admin privileges to avoid non-responsive CGX window.
                     cmd.StartInfo.Verb = "runas";
                 }
                 cmd.EnableRaisingEvents = true;
