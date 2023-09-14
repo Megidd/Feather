@@ -3,7 +3,7 @@ using System;
 
 namespace Feather
 {
-    internal class UnitConversion
+    internal class Unit
     {
         public static float Convert(float f, UnitSystem unitI, UnitSystem unitO)
         {
