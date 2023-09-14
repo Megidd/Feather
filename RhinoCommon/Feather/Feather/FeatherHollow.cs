@@ -93,9 +93,7 @@ namespace Feather
                 parameters.CheckForUnusedVertices = true;
                 Rhino.FileIO.TextLog log = new Rhino.FileIO.TextLog(Path.GetTempPath() + "mesh-checks.txt");
                 bool isValid = meshOut.Check(log, ref parameters);
-                RhinoApp.WriteLine("Is output mesh valid? {0}", isValid);
                 bool hasInvalidVertexIndices = Helper.HasInvalidVertexIndices(meshOut);
-                RhinoApp.WriteLine("Does output mesh have invalid vertex indices? {0}", hasInvalidVertexIndices);
                 if (!isValid || hasInvalidVertexIndices)
                 {
                     RhinoApp.WriteLine("Total cound of disjoint meshes: {0}", parameters.DisjointMeshCount);

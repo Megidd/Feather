@@ -5,8 +5,6 @@ using System.Text.Json;
 using Rhino;
 using Rhino.Commands;
 using Rhino.DocObjects;
-using Rhino.Geometry;
-using static Feather.Helper;
 
 namespace Feather
 {
