@@ -20,23 +20,10 @@ namespace Feather
 
         public override string EnglishName => "FeatherPrintable";
 
-        private static RhinoDoc docCurrent; // Accessed by async post-process code.
-        private static RhinoObject inObj = null; // Input object.
-        private static string inPath = Path.GetTempPath() + "input.stl"; // Input object to be saved as STL.
-        // Result file, consumable by ABAQUS or CalculiX.
-        // Must include "#" character as placeholder for layer number.
-        private static string resultPath = Path.GetTempPath() + "result-layer0-to-layer#.inp"; // Consumable by FEA.
-        private static string resultInfoPath = Path.GetTempPath() + "result-info.json"; // Info & details.
-        private static string logFeaPath = Path.GetTempPath() + "FEA-log.txt";
-
-        // Must include "#" character as placeholder for layer number.
-        private static string layerByLayerResultPath = Path.GetTempPath() + "result-layer0-to-layer#.inp";
-
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
             try
             {
-                docCurrent = doc; // Accessed by async post-process code.
 
                 string message = string.Format("Document model unit system is set to {0}. It will affect the result. Is {0} unit acceptable?", doc.ModelUnitSystem.ToString().ToLower());
                 bool isUnitAcceptable = Helper.GetYesNoFromUser(message);
@@ -46,8 +33,9 @@ namespace Feather
                     return Result.Failure;
                 }
 
-                inObj = Helper.GetInputStl(doc.ModelUnitSystem, inPath);
-                if (inObj == null)
+                string PathStl = Path.GetTempPath() + "input.stl"; // Input object to be saved as STL.
+                RhinoObject obj = Helper.GetInputStl(doc.ModelUnitSystem, PathStl);
+                if (obj == null)
                 {
                     return Result.Failure;
                 }
@@ -144,11 +132,7 @@ namespace Feather
                 RhinoApp.WriteLine("First voxel layer on Z axis is considered restraint i.e. in contact with 3D print floor.");
 
                 Dictionary<string, dynamic> specs = new Dictionary<string, dynamic>();
-                specs.Add("PathStl", inPath);
-                specs.Add("PathResultWithPlaceholder", resultPath);
-                specs.Add("PathResultInfo", resultInfoPath);
-                specs.Add("PathLogFea", logFeaPath);
-                specs.Add("LayerToStartFea", 3); // FEA will be done after this layer.
+                specs.Add("PathStl", PathStl);
                 specs.Add("MassDensity", MassDensity); // (N*s2/mm4)
                 specs.Add("YoungModulus", YoungModulus); // MPa (N/mm2)
                 specs.Add("PoissonRatio", PoissonRatio);
