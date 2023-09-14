@@ -74,7 +74,7 @@ namespace Feather
         {
             try
             {
-                RhinoApp.WriteLine("Post process started for {0}", outPath);
+                RhinoApp.WriteLine("Post process started.");
                 Mesh meshOut = Helper.LoadStlAsMesh(outPath);
 
                 // Run the CheckValidity method on the mesh.
