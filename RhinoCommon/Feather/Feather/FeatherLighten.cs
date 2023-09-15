@@ -28,7 +28,7 @@ namespace Feather
         private static RhinoObject inObj = null; // Input object.
         private static string inPath = Path.GetTempPath() + "input.stl"; // Input object to be saved as STL.
         private static string resultPath = Path.GetTempPath() + "result.inp"; // Consumable by FEA.
-        private static string resultInfoPath = Path.GetTempPath() + "result-info.json"; // Info & details.
+        private static string reportPath = Path.GetTempPath() + "result-report.json"; // Report details after finite elements are generated.
         private static string logFeaPath = Path.GetTempPath() + "FEA-log.txt";
 
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
@@ -227,7 +227,7 @@ namespace Feather
             specs.Add("PathLoadPoints", loadPth);
             specs.Add("PathRestraintPoints", restraintPth);
             specs.Add("PathResult", resultPath);
-            specs.Add("PathResultInfo", resultInfoPath);
+            specs.Add("PathReport", reportPath);
             specs.Add("PathLogFea", logFeaPath);
             specs.Add("MassDensity", MassDensity);
             specs.Add("YoungModulus", YoungModulus);
