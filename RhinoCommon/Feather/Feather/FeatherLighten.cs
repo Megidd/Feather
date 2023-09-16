@@ -253,7 +253,7 @@ namespace Feather
             args += " ";
             args += specsPth;
 
-            Helper.RunLogic("Cotton.exe", args, PostProcess);
+            Helper.RunLogicWithLog("Cotton.exe", args, PostProcess);
 
             RhinoApp.WriteLine("Process started. Please wait...");
 

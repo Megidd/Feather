@@ -332,6 +332,56 @@ namespace Feather
             }
         }
 
+        public static void RunLogicWithLog(string exePath, string args, PostProcess pp)
+        {
+            cmd = new Process();
+
+            try
+            {
+                cmd.StartInfo.FileName = exePath;
+                cmd.StartInfo.Arguments = args;
+                cmd.StartInfo.UseShellExecute = false;
+                cmd.StartInfo.CreateNoWindow = true;
+                cmd.StartInfo.RedirectStandardOutput = true;
+                cmd.StartInfo.RedirectStandardError = true;
+                cmd.StartInfo.RedirectStandardInput = true;
+
+                cmd.EnableRaisingEvents = true;
+                cmd.OutputDataReceived += new DataReceivedEventHandler(cmd_LogReceived);
+                cmd.ErrorDataReceived += new DataReceivedEventHandler(cmd_LogReceived);
+                cmd.Exited += new EventHandler(cmd_Exited);
+                cmd.Exited += new EventHandler(pp);
+
+                cmd.Start();
+
+                // Begin asynchronous log.
+                cmd.BeginOutputReadLine();
+                cmd.BeginErrorReadLine();
+            }
+
+            catch (Exception ex)
+            {
+                RhinoApp.WriteLine("Error on process start: {0}", ex.Message);
+            }
+        }
+
+        private static void cmd_LogReceived(object sender, DataReceivedEventArgs e)
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(e.Data))
+                {
+                    // The external process logs are usually line-by-line.
+                    // So, don't worry about the new line character.
+                    RhinoApp.WriteLine("Process log: {0}", e.Data);
+                }
+            }
+            catch (Exception ex)
+            {
+                RhinoApp.WriteLine("Error on process log: {0}", ex.Message);
+            }
+        }
+
         public static Mesh LoadStlAsMesh(string fileName)
         {
             Mesh mesh = new Mesh();
