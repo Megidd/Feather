@@ -47,11 +47,11 @@ namespace Feather
                     throw new Exception("unit of STL file must be set to mm");
                 }
 
-                // STANDARD RESINS
-                // https://formlabs-media.formlabs.com/filer_public/ac/89/ac8963db-f54a-4cac-8fe9-fb740a7b06f1/formlabs-materials-library.pdf
+                // Resin properties:
+                // https://3dprinting.stackexchange.com/a/21439/11091
                 // Units of measurement:
                 // https://engineering.stackexchange.com/q/54454/15178
-                double MassDensity = 1250 * Math.Pow(10, -12); // (N*s2/mm4) // Assumed density: 1.15 g/cm3 < X <1.25 g/cm3
+                double MassDensity = 1130 * Math.Pow(10, -12); // (N*s2/mm4) // Assumed: 1.13 g/cm3
                 double YoungModulus = 1.6 * 1000; // MPa (N/mm2)
                 double PoissonRatio = 0.3;
                 double TensileStrength = 38; // MPa (N/mm2)
@@ -61,35 +61,35 @@ namespace Feather
                 {
                     case 1:
                         // TODO: Adjust value.
-                        MassDensity = 1250 * Math.Pow(10, -12); // (N*s2/mm4)
+                        MassDensity = 1130 * Math.Pow(10, -12); // (N*s2/mm4)
                         YoungModulus = 1.6 * 1000; // MPa (N/mm2)
                         PoissonRatio = 0.3;
                         TensileStrength = 38; // MPa (N/mm2)
                         break;
                     case 2:
                         // TODO: Adjust value.
-                        MassDensity = 1250 * Math.Pow(10, -12); // (N*s2/mm4)
+                        MassDensity = 1130 * Math.Pow(10, -12); // (N*s2/mm4)
                         YoungModulus = 1.6 * 1000; // MPa (N/mm2)
                         PoissonRatio = 0.3;
                         TensileStrength = 38; // MPa (N/mm2)
                         break;
                     case 3:
                         // TODO: Adjust value.
-                        MassDensity = 1250 * Math.Pow(10, -12); // (N*s2/mm4)
+                        MassDensity = 1130 * Math.Pow(10, -12); // (N*s2/mm4)
                         YoungModulus = 1.6 * 1000; // MPa (N/mm2)
                         PoissonRatio = 0.3;
                         TensileStrength = 38; // MPa (N/mm2)
                         break;
                     case 4:
                         // TODO: Adjust value.
-                        MassDensity = 1250 * Math.Pow(10, -12); // (N*s2/mm4)
+                        MassDensity = 1130 * Math.Pow(10, -12); // (N*s2/mm4)
                         YoungModulus = 1.6 * 1000; // MPa (N/mm2)
                         PoissonRatio = 0.3;
                         TensileStrength = 38; // MPa (N/mm2)
                         break;
                     case 5:
                         // TODO: Adjust value.
-                        MassDensity = 1250 * Math.Pow(10, -12); // (N*s2/mm4)
+                        MassDensity = 1130 * Math.Pow(10, -12); // (N*s2/mm4)
                         YoungModulus = 1.6 * 1000; // MPa (N/mm2)
                         PoissonRatio = 0.3;
                         TensileStrength = 38; // MPa (N/mm2)
