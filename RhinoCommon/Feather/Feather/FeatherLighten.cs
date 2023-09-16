@@ -24,17 +24,8 @@ namespace Feather
         ///<returns>The command name as it appears on the Rhino command line.</returns>
         public override string EnglishName => "FeatherLighten";
 
-        private static RhinoDoc docCurrent; // Accessed by async post-process code.
-        private static RhinoObject inObj = null; // Input object.
-        private static string inPath = Path.GetTempPath() + "input.stl"; // Input object to be saved as STL.
-        private static string resultPath = Path.GetTempPath() + "result.inp"; // Consumable by FEA.
-        private static string reportPath = Path.GetTempPath() + "report.json"; // Report details after finite elements are generated.
-        private static string logPath = Path.GetTempPath() + "log.txt";
-
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
-            docCurrent = doc; // Accessed by async post-process code.
-
             string message = string.Format("Document model unit system is set to {0}. It will affect the result. Is {0} unit acceptable?", doc.ModelUnitSystem.ToString().ToLower());
             bool isUnitAcceptable = Helper.GetYesNoFromUser(message);
             if (!isUnitAcceptable)
@@ -43,7 +34,9 @@ namespace Feather
                 return Result.Failure;
             }
 
-            inObj = Helper.GetInputStl(doc.ModelUnitSystem, inPath);
+            string stlPth = Path.GetTempPath() + "input.stl"; // Input object to be saved as STL.
+
+            RhinoObject inObj = Helper.GetInputStl(doc.ModelUnitSystem, stlPth);
             if (inObj == null)
             {
                 return Result.Failure;
@@ -223,12 +216,9 @@ namespace Feather
             File.WriteAllText(restraintPth, restraintJson);
 
             Dictionary<string, dynamic> specs = new Dictionary<string, dynamic>();
-            specs.Add("PathStl", inPath);
+            specs.Add("PathStl", stlPth);
             specs.Add("PathLoadPoints", loadPth);
             specs.Add("PathRestraintPoints", restraintPth);
-            specs.Add("PathResult", resultPath);
-            specs.Add("PathReport", reportPath);
-            specs.Add("PathLog", logPath);
             specs.Add("MassDensity", MassDensity);
             specs.Add("YoungModulus", YoungModulus);
             specs.Add("PoissonRatio", PoissonRatio);
