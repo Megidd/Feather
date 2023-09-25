@@ -13,38 +13,25 @@ namespace Feather
     {
         public static void Verify()
         {
-            try
-            {
-                // Prepare arguments as text fields.
-                string args = "";
-                args += "license";
+            // Prepare arguments as text fields.
+            string args = "";
+            args += "license";
 
-                Helper.RunLogic("Cotton.exe", args, PostProcess);
-            }
-
-            catch (Exception ex)
-            {
-                RhinoApp.WriteLine("Error on run command: {0}", ex.Message);
-            }
+            Helper.RunLogic("Cotton.exe", args, PostProcess);
         }
 
         private static void PostProcess(object sender, EventArgs e)
         {
-            try
+            Process process = sender as Process;
+            if (process != null)
             {
-                Process process = sender as Process;
-                if (process != null)
+                // https://stackoverflow.com/a/26002230/3405291
+                int test = process.ExitCode;
+                if (test == -1)
                 {
-                    int test = process.ExitCode;
-                    if (test == -1)
-                    {
-                        throw new Exception("No valid license found, please visit: https://www.patreon.com/Megidd/shop");
-                    }
+                    // https://stackoverflow.com/a/4542090/3405291
+                    throw new Exception("No valid license found, please visit: https://www.patreon.com/Megidd/shop");
                 }
-            }
-            catch (Exception ex)
-            {
-                throw;
             }
         }
     }
