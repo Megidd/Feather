@@ -24,8 +24,6 @@ namespace Feather
         {
             try
             {
-                // If license is not valid, an exception with a proper message is thrown.
-                // The exception is handled by a log and return.
                 bool permitted = Permit.Verify();
                 if (!permitted)
                 {
