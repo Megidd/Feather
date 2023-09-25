@@ -281,7 +281,7 @@ namespace Feather
             }
         }
 
-        public static int RunLogicAndWait(string exePath, string args)
+        public static int RunLogicWithLogAndWait(string exePath, string args)
         {
             cmd = new Process();
             try

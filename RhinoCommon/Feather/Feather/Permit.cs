@@ -17,7 +17,7 @@ namespace Feather
             string args = "";
             args += "permit";
 
-            int exitCode = Helper.RunLogicAndWait("Cotton.exe", args);
+            int exitCode = Helper.RunLogicWithLogAndWait("Cotton.exe", args);
             return exitCode==0;
         }
     }
