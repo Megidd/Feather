@@ -26,10 +26,13 @@ namespace Feather
             {
                 // If license is not valid, an exception with a proper message is thrown.
                 // The exception is handled by a log and return.
-                bool permitted = Permit.Verify();
-                if (!permitted)
+                int exitCode = Permit.Verify();
+                if (exitCode == -1)
                 {
                     RhinoApp.WriteLine("No valid license found, please visit: https://www.patreon.com/Megidd/shop");
+                    return Result.Failure;
+                } else if (exitCode == -2) {
+                    RhinoApp.WriteLine("License validation threw an error.");
                     return Result.Failure;
                 }
 
