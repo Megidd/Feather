@@ -304,6 +304,7 @@ namespace Feather
                 cmd.BeginOutputReadLine();
                 cmd.BeginErrorReadLine();
 
+                // https://stackoverflow.com/a/4251752/3405291
                 cmd.WaitForExit();
                 return cmd.ExitCode;
             }
