@@ -26,6 +26,13 @@ namespace Feather
 
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
+            bool permitted = Permit.Verify();
+            if (!permitted)
+            {
+                RhinoApp.WriteLine("No valid license found, please visit: https://www.patreon.com/Megidd/shop");
+                return Result.Failure;
+            }
+
             string message = string.Format("Document model unit system is set to {0}. It will affect the result. Is {0} unit acceptable?", doc.ModelUnitSystem.ToString().ToLower());
             bool isUnitAcceptable = Helper.GetYesNoFromUser(message);
             if (!isUnitAcceptable)

@@ -26,6 +26,13 @@ namespace Feather
 
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
+            bool permitted = Permit.Verify();
+            if (!permitted)
+            {
+                RhinoApp.WriteLine("No valid license found, please visit: https://www.patreon.com/Megidd/shop");
+                return Result.Failure;
+            }
+
             docCurrent = doc; // Accessed by async post-process code.
             inObj = Helper.GetInputStl(doc.ModelUnitSystem, inPath);
             if (inObj == null)
