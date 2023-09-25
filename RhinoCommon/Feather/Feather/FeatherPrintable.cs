@@ -26,7 +26,7 @@ namespace Feather
             {
                 // If license is not valid, an exception with a proper message is thrown.
                 // The exception is handled by a log and return.
-                License.Verify();
+                Permit.Verify();
 
                 string message = string.Format("Document model unit system is set to {0}. It will affect the result. Is {0} unit acceptable?", doc.ModelUnitSystem.ToString().ToLower());
                 bool isUnitAcceptable = Helper.GetYesNoFromUser(message);

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Feather
 {
-    internal class License
+    internal class Permit
     {
         public static void Verify()
         {
