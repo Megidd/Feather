@@ -11,14 +11,14 @@ namespace Feather
 {
     internal class Permit
     {
-        public static int Verify()
+        public static bool Verify()
         {
             // Prepare arguments as text fields.
             string args = "";
-            args += "license";
+            args += "permit";
 
             int exitCode = Helper.RunLogicAndWait("Cotton.exe", args);
-            return exitCode;
+            return exitCode==0;
         }
     }
 }

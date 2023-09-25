@@ -288,21 +288,8 @@ namespace Feather
             {
                 cmd.StartInfo.FileName = exePath;
                 cmd.StartInfo.Arguments = args;
-                cmd.StartInfo.UseShellExecute = false;
-                cmd.StartInfo.CreateNoWindow = true;
-                cmd.StartInfo.RedirectStandardOutput = true;
-                cmd.StartInfo.RedirectStandardError = true;
-                cmd.StartInfo.RedirectStandardInput = true;
-
-                cmd.EnableRaisingEvents = true;
-                cmd.OutputDataReceived += new DataReceivedEventHandler(cmd_LogReceived);
-                cmd.ErrorDataReceived += new DataReceivedEventHandler(cmd_LogReceived);
 
                 cmd.Start();
-
-                // Begin asynchronous log.
-                cmd.BeginOutputReadLine();
-                cmd.BeginErrorReadLine();
 
                 cmd.WaitForExit();
                 return cmd.ExitCode;
