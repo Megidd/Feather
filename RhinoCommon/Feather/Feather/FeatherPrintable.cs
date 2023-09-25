@@ -26,7 +26,15 @@ namespace Feather
             {
                 // If license is not valid, an exception with a proper message is thrown.
                 // The exception is handled by a log and return.
-                Permit.Verify();
+                int exitCode = Permit.Verify();
+                if (exitCode == -1)
+                {
+                    RhinoApp.WriteLine("No valid license found, please visit: https://www.patreon.com/Megidd/shop");
+                    return Result.Failure;
+                } else if (exitCode == -2) {
+                    RhinoApp.WriteLine("License validation threw an error.");
+                    return Result.Failure;
+                }
 
                 string message = string.Format("Document model unit system is set to {0}. It will affect the result. Is {0} unit acceptable?", doc.ModelUnitSystem.ToString().ToLower());
                 bool isUnitAcceptable = Helper.GetYesNoFromUser(message);

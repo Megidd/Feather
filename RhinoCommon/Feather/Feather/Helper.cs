@@ -281,6 +281,39 @@ namespace Feather
             }
         }
 
+        public static int RunLogicAndWait(string exePath, string args)
+        {
+            cmd = new Process();
+            try
+            {
+                cmd.StartInfo.FileName = exePath;
+                cmd.StartInfo.Arguments = args;
+                cmd.StartInfo.UseShellExecute = false;
+                cmd.StartInfo.CreateNoWindow = true;
+                cmd.StartInfo.RedirectStandardOutput = true;
+                cmd.StartInfo.RedirectStandardError = true;
+                cmd.StartInfo.RedirectStandardInput = true;
+
+                cmd.EnableRaisingEvents = true;
+                cmd.OutputDataReceived += new DataReceivedEventHandler(cmd_LogReceived);
+                cmd.ErrorDataReceived += new DataReceivedEventHandler(cmd_LogReceived);
+
+                cmd.Start();
+
+                // Begin asynchronous log.
+                cmd.BeginOutputReadLine();
+                cmd.BeginErrorReadLine();
+
+                cmd.WaitForExit();
+                return cmd.ExitCode;
+            }
+            catch (Exception ex)
+            {
+                RhinoApp.WriteLine("Error on process run: {0}", ex.Message);
+                return -2;
+            }
+        }
+
         private static Process cmd;
         public delegate void PostProcess(object sender, EventArgs e);
         public static void RunLogic(string exePath, string args, PostProcess pp)
