@@ -7,6 +7,7 @@ using Rhino.Geometry;
 
 namespace Feather
 {
+    [CommandStyle(Style.Hidden)]
     public class FeatherHollow : Command
     {
         public FeatherHollow()
