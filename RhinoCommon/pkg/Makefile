@@ -1,6 +1,8 @@
 pkg:
-	cd dist && copy ..\Feather\Feather\bin\Release\net48\* .
-	cd dist && "C:\Program Files\Rhino 7\System\Yak.exe" spec
+	cd dist && copy ..\..\Feather\Feather\bin\Release\net48\* .
+	cd dist && del Feather.pdb
+	### Existing manifest.yml. Skipping:
+	# cd dist && "C:\Program Files\Rhino 7\System\Yak.exe" spec
 	cd dist && "C:\Program Files\Rhino 7\System\Yak.exe" build --platform win
 
 push:
