@@ -31,7 +31,7 @@ namespace Feather
                     return Result.Failure;
                 }
 
-                RhinoApp.WriteLine("Document model unit system is set to {0}. It will affect the result.", doc.ModelUnitSystem.ToString().ToLower());
+                RhinoApp.WriteLine("Document model unit system is set to {0}.", doc.ModelUnitSystem.ToString().ToLower());
 
                 string PathStl = Path.GetTempPath() + "input.stl"; // Input object to be saved as STL.
                 RhinoObject obj = Helper.GetInputStl(doc.ModelUnitSystem, PathStl);
