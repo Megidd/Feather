@@ -30,6 +30,7 @@ commercial:
 	copy "Cotton.exe" "%userprofile%\source\repos\Feather\RhinoCommon\Feather\Feather\bin\Debug\net48"
 
 # To create the manifest file, if `manifest.yml` doesn't exist already.
+# If manifest exists, the version must be incremented before each push to server.
 manifest:
 	"C:\Program Files\Rhino 7\System\Yak.exe" spec
 
