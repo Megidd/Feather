@@ -46,8 +46,10 @@ login:
 # To push plugin package to Rhino3D server.
 push:
 	cd dist
-	for /f "delims=" %%i in ('dir /b /od /a-d feather-*-win.yak') do set LAST=%%i
-	"C:\Program Files\Rhino 7\System\Yak.exe" push "%LAST%"
+	echo off > temp.bat
+    for /f "delims=" %%i in ('dir /b /od /a-d feather-*-win.yak') do echo "C:\Program Files\Rhino 7\System\Yak.exe" push "%%i" > temp.bat
+    call temp.bat
+    del temp.bat
 
 # To search for plugin on Rhino3D server.
 search:
