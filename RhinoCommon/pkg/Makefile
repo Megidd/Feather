@@ -6,18 +6,17 @@
 clean:
 	cd dist
 	-rem Deleting outdated files...
-	-@del Cotton.exe
-	-@del feather-*.yak
-	-@del Feather.rhp
-	-@del System*
-	-@del Microsoft*
-
+	-@del Cotton.exe 2> NUL
+	-@del feather-*.yak 2> NUL
+	-@del Feather.rhp 2> NUL
+	-@del System* 2> NUL
+	-@del Microsoft* 2> NUL
 
 trial:
 	cd %userprofile%\go\src\Cotton
-	make clean
-	make trial
-	make install
+	nmake clean
+	nmake trial
+	nmake install
 
 commercial:
 	cd $(HOME)/go/src/Cotton/ && make clean
