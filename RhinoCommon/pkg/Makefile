@@ -1,22 +1,23 @@
-$(info $(SHELL))
+# Make targets of this file by Windows NMAKE tool.
+# NMAKE tool is installed alongside Visual Studio C#.
+# By Windows start menu, launch:
+# Developer Command Prompt for VS 2022
 
-# Run this target with Git Bash on Windows.
 clean:
-	DELETE := rm -f
-	cd dist && $(DELETE) Cotton.exe
-	cd dist && $(DELETE) feather-*.yak
-	cd dist && $(DELETE) Feather.rhp
-	cd dist && $(DELETE) System*
-	cd dist && $(DELETE) Microsoft*
+	cd dist
+	-rem Deleting outdated files...
+	-@del Cotton.exe
+	-@del feather-*.yak
+	-@del Feather.rhp
+	-@del System*
+	-@del Microsoft*
 
-# Run this target with Git Bash on Windows.
+
 trial:
-	ifndef HOME
-		$(error HOME is not set)
-	endif
-	cd $(HOME)/go/src/Cotton/ && make clean
-	cd $(HOME)/go/src/Cotton/ && make trial
-	cd $(HOME)/go/src/Cotton/ && make install
+	cd %userprofile%\go\src\Cotton
+	make clean
+	make trial
+	make install
 
 commercial:
 	cd $(HOME)/go/src/Cotton/ && make clean
