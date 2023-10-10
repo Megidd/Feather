@@ -27,11 +27,11 @@ commercial:
 	copy "Cotton.exe" "%userprofile%\source\repos\Feather\RhinoCommon\Feather\Feather\bin\Debug\net48"
 
 pkg:
-	cd %userprofile%\source\repos\Feather\RhinoCommon\pkg\dist\
-	copy %userprofile%\source\repos\Feather\RhinoCommon\Feather\Feather\bin\Release\net48\* .
+	cd dist
+	copy "%userprofile%\source\repos\Feather\RhinoCommon\Feather\Feather\bin\Release\net48\*" .
 	del Feather.pdb
-	REM Skip if manifest.yml exists:
-	REM "C:\Program Files\Rhino 7\System\Yak.exe" spec
+	rem Skip the following command, if `manifest.yml` exists:
+	rem "C:\Program Files\Rhino 7\System\Yak.exe" spec
 	"C:\Program Files\Rhino 7\System\Yak.exe" build --platform win
 
 push:
