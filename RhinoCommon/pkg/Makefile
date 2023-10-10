@@ -5,23 +5,26 @@
 
 clean:
 	cd dist
-	-rem Deleting outdated files...
-	-del Cotton.exe 2> NUL
-	-del feather-*.yak 2> NUL
-	-del Feather.rhp 2> NUL
-	-del System* 2> NUL
-	-del Microsoft* 2> NUL
+	rem Deleting outdated files...
+	del Cotton.exe
+	del feather-*.yak
+	del Feather.rhp
+	del System*
+	del Microsoft*
 
 trial:
 	cd %userprofile%\go\src\Cotton
-	nmake clean
-	nmake trial
-	nmake install
+	go clean
+	go build -tags trial
+	copy "Cotton.exe" "%userprofile%\source\repos\Feather\RhinoCommon\Feather\Feather\bin\Release\net48"
+	copy "Cotton.exe" "%userprofile%\source\repos\Feather\RhinoCommon\Feather\Feather\bin\Debug\net48"
 
 commercial:
-	cd $(HOME)/go/src/Cotton/ && make clean
-	cd $(HOME)/go/src/Cotton/ && make commercial
-	cd $(HOME)/go/src/Cotton/ && make install
+	cd %userprofile%\go\src\Cotton
+	go clean
+	go build -tags commercial
+	copy "Cotton.exe" "%userprofile%\source\repos\Feather\RhinoCommon\Feather\Feather\bin\Release\net48"
+	copy "Cotton.exe" "%userprofile%\source\repos\Feather\RhinoCommon\Feather\Feather\bin\Debug\net48"
 
 pkg:
 	cd %userprofile%\source\repos\Feather\RhinoCommon\pkg\dist\
