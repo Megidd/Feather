@@ -57,6 +57,6 @@ push:
 search:
 	"C:\Program Files\Rhino 7\System\Yak.exe" search --all --prerelease Feather
 
-distribute-trial: clean trial pkg push
+distribute-trial: clean trial pkg push search
 
 distribute-commercial: clean commercial
