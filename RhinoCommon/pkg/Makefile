@@ -6,11 +6,11 @@
 clean:
 	cd dist
 	-rem Deleting outdated files...
-	-@del Cotton.exe 2> NUL
-	-@del feather-*.yak 2> NUL
-	-@del Feather.rhp 2> NUL
-	-@del System* 2> NUL
-	-@del Microsoft* 2> NUL
+	-del Cotton.exe 2> NUL
+	-del feather-*.yak 2> NUL
+	-del Feather.rhp 2> NUL
+	-del System* 2> NUL
+	-del Microsoft* 2> NUL
 
 trial:
 	cd %userprofile%\go\src\Cotton
