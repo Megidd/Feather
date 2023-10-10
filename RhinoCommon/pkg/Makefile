@@ -34,11 +34,14 @@ commercial:
 manifest:
 	"C:\Program Files\Rhino 7\System\Yak.exe" spec
 
-# To create plugin package.
-pkg:
+# Install the binaries inside the distribution folder.
+install:
 	cd %userprofile%\source\repos\Feather\RhinoCommon\pkg\dist
 	copy "%userprofile%\source\repos\Feather\RhinoCommon\Feather\Feather\bin\Release\net48\*" .
 	del Feather.pdb
+
+# To create plugin package.
+pkg:
 	"C:\Program Files\Rhino 7\System\Yak.exe" build --platform win
 
 # To log in before push to server, if not already logged in:
@@ -57,6 +60,6 @@ push:
 search:
 	"C:\Program Files\Rhino 7\System\Yak.exe" search --all --prerelease Feather
 
-distribute-trial: clean trial pkg push search
+distribute-trial: clean trial install pkg push search
 
-distribute-commercial: clean commercial
+distribute-commercial: clean commercial install
