@@ -35,8 +35,8 @@ pkg:
 	"C:\Program Files\Rhino 7\System\Yak.exe" build --platform win
 
 push:
-	cd %userprofile%\source\repos\Feather\RhinoCommon\pkg\dist\
-	REM Skip if already logged in:
-	REM "C:\Program Files\Rhino 7\System\Yak.exe" login
+	cd dist
+	rem Skip the following command, if already logged in:
+	rem "C:\Program Files\Rhino 7\System\Yak.exe" login
 	"C:\Program Files\Rhino 7\System\Yak.exe" push feather-*.yak
 	"C:\Program Files\Rhino 7\System\Yak.exe" search --all --prerelease Feather
