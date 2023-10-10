@@ -12,6 +12,7 @@ clean:
 	del System* 2> NUL
 	del Microsoft* 2> NUL
 	del temp.bat 2> NUL
+	del NULL 2> NUL
 
 # To build strategic binary.
 trial:
@@ -60,6 +61,10 @@ push:
 search:
 	"C:\Program Files\Rhino 7\System\Yak.exe" search --all --prerelease Feather
 
+zip:
+	cd %userprofile%\source\repos\Feather\RhinoCommon\pkg
+	powershell Compress-Archive -Force dist FEAther.zip
+
 distribute-trial: clean trial install pkg push search
 
-distribute-commercial: clean commercial install
+distribute-commercial: clean commercial install zip
