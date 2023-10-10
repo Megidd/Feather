@@ -61,10 +61,13 @@ push:
 search:
 	"C:\Program Files\Rhino 7\System\Yak.exe" search --all --prerelease Feather
 
+# To create a ZIP file to be uploaded to Patreon shop.
 zip:
 	cd %userprofile%\source\repos\Feather\RhinoCommon\pkg
 	powershell Compress-Archive -Force dist FEAther.zip
 
+# To create and distribute the trial release as a Rhino3D plugin package.
 distribute-trial: clean trial install pkg push search
 
+# To create and distribute the commercial release as a Rhino3D plugin ZIP file.
 distribute-commercial: clean commercial install zip
