@@ -1,5 +1,5 @@
 # Make targets of this file by Windows NMAKE tool.
-# NMAKE tool is installed alongside Visual Studio C#.
+# NMAKE tool is installed alongside Visual Studio 2022, for example.
 # By Windows start menu, launch:
 # Developer Command Prompt for VS 2022
 
