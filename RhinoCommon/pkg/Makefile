@@ -5,12 +5,13 @@
 
 # To delete outdated files.
 clean:
-	cd dist
-	del Cotton.exe
-	del feather-*.yak
-	del Feather.rhp
-	del System*
-	del Microsoft*
+	cd %userprofile%\source\repos\Feather\RhinoCommon\pkg\dist
+	del Cotton.exe 2> NUL
+	del feather-*.yak 2> NUL
+	del Feather.rhp 2> NUL
+	del System* 2> NUL
+	del Microsoft* 2> NUL
+	del temp.bat 2> NUL
 
 # To build strategic binary.
 trial:
@@ -32,9 +33,9 @@ commercial:
 manifest:
 	"C:\Program Files\Rhino 7\System\Yak.exe" spec
 
-# To distribute plugin package.
+# To create plugin package.
 pkg:
-	cd dist
+	cd %userprofile%\source\repos\Feather\RhinoCommon\pkg\dist
 	copy "%userprofile%\source\repos\Feather\RhinoCommon\Feather\Feather\bin\Release\net48\*" .
 	del Feather.pdb
 	"C:\Program Files\Rhino 7\System\Yak.exe" build --platform win
@@ -45,7 +46,7 @@ login:
 
 # To push plugin package to Rhino3D server.
 push:
-	cd dist
+	cd %userprofile%\source\repos\Feather\RhinoCommon\pkg\dist
 	echo off > temp.bat
     for /f "delims=" %%i in ('dir /b /od /a-d feather-*-win.yak') do echo "C:\Program Files\Rhino 7\System\Yak.exe" push "%%i" > temp.bat
     call temp.bat
@@ -54,3 +55,7 @@ push:
 # To search for plugin on Rhino3D server.
 search:
 	"C:\Program Files\Rhino 7\System\Yak.exe" search --all --prerelease Feather
+
+distribute-trial: clean trial pkg push
+
+distribute-commercial: clean commercial
