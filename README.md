@@ -5,6 +5,7 @@ Sponsored by [Nano3DTech](https://nano3dtech.com/).
 # Table of contents
 
 1. [What it does](#what-it-does)
+1. [How to use](#how-to-use-it)
    1. [Video guide](#video-guide)
 1. [Installation](#installation)
    1. [Trial](#trial)
@@ -13,6 +14,12 @@ Sponsored by [Nano3DTech](https://nano3dtech.com/).
 # What it does
 
 It helps you optimize 3D print workflow by FEA, finite element analysis. It means you can analyze your 3D model layer-by-layer almost the way it's 3D printed slice-by-slice.
+
+# How to use it
+
+Once the plugin is installed, its commands can be accessed by typing the plugin name on command line.
+
+![Access commands](RhinoCommon/doc/commands.svg "How to access the commands")
 
 ## Video guide
 
