@@ -1,6 +1,6 @@
 # FEAther ![Icon](./RhinoCommon/pkg/dist/icon.svg)
 
-Sponsored by [Nano3DTech](https://nano3dtech.com/).
+A Rhino3D plugin sponsored by [Nano3DTech](https://nano3dtech.com/).
 
 # Table of contents
 
