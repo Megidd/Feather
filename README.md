@@ -4,12 +4,24 @@ A Rhino3D plugin sponsored by [Nano3DTech](https://nano3dtech.com/).
 
 # Table of contents
 
-1. [What it does](#what-it-does)
-1. [How to use](#how-to-use-it)
-   1. [Video guide](#video-guide)
 1. [Installation](#installation)
    1. [Trial](#trial)
    1. [Commercial](#commercial)
+1. [What it does](#what-it-does)
+1. [How to use](#how-to-use-it)
+   1. [Video guide](#video-guide)
+
+# Installation
+
+## Trial
+
+If you like to try it, simply visit the plugin [page](https://www.food4rhino.com/en/app/feather). Then log in and push the `install` button in front of latest released version. Alternatively, the plugin is accessible through the package manager UI via the `_PackageManager` command.
+
+![Install trial by `_PackageManager` command](RhinoCommon/doc/trial-install.svg "Install trial via `_PackageManager` command")
+
+## Commercial
+
+If you like to purchase it, simply visit the online shop [here](https://www.patreon.com/Megidd/shop).
 
 # What it does
 
@@ -26,15 +38,3 @@ Once the plugin is installed, its commands can be accessed by typing the plugin 
 The following video demonstrates how to use the plugin commands after installation.
 
 [![Usage guide video](http://img.youtube.com/vi/_UDrNsUkYzo/0.jpg)](https://youtu.be/_UDrNsUkYzo "Usage guide video")
-
-# Installation
-
-## Trial
-
-If you like to try it, simply visit the plugin [page](https://www.food4rhino.com/en/app/feather). Then log in and push the `install` button in front of latest released version. Alternatively, the plugin is accessible through the package manager UI via the `_PackageManager` command.
-
-![Install trial by `_PackageManager` command](RhinoCommon/doc/trial-install.svg "Install trial via `_PackageManager` command")
-
-## Commercial
-
-If you like to purchase it, simply visit the online shop [here](https://www.patreon.com/Megidd/shop).
