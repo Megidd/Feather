@@ -22,7 +22,15 @@ If you like to try it, simply visit the plugin [page](https://www.food4rhino.com
 
 ## Commercial
 
-If you like to purchase it, simply visit the online shop [here](https://www.patreon.com/Megidd/shop).
+If you like to purchase it, simply do these:
+
+1. Visit the online shop [here](https://www.patreon.com/Megidd/shop).
+1. Download the compressed file.
+1. Extract the compressed file.
+1. Use Rhino3D `PlugInManager` command to install the `RHP` file inside the extracted folder.
+1. Start typing `Feather` on Rhino3D command line to auto complete the plugin commands.
+
+![Install commercial by plugin manager](RhinoCommon/doc/install-plugin-manager.svg "Install commercial by plugin manager")
 
 # What it does
 
