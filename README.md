@@ -25,7 +25,7 @@ Once the plugin is installed, its commands can be accessed by typing the plugin 
 
 The following video demonstrates how to use the plugin commands after installation.
 
-[![Video help](http://img.youtube.com/vi/_UDrNsUkYzo/0.jpg)](https://youtu.be/_UDrNsUkYzo "FEAther: Rhino3D plugin")
+[![Usage guide video](http://img.youtube.com/vi/_UDrNsUkYzo/0.jpg)](https://youtu.be/_UDrNsUkYzo "Usage guide video")
 
 # Installation
 
