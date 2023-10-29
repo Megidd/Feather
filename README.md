@@ -28,7 +28,7 @@ If you like to try it, simply visit the plugin [page](https://www.food4rhino.com
 
 Alternatively, the plugin is accessible through the package manager UI via the `_PackageManager` command.
 
-![Install trial by `_PackageManager` command](doc/trial-install.svg "Install trial via `_PackageManager` command")
+![Install trial by `_PackageManager` command](RhinoCommon/doc/trial-install.svg "Install trial via `_PackageManager` command")
 
 ## Commercial
 
