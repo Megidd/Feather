@@ -10,6 +10,7 @@ A Rhino3D plugin sponsored by [Nano3DTech](https://nano3dtech.com/).
 1. [What it does](#what-it-does)
 1. [How to use](#how-to-use-it)
    1. [Video guide](#video-guide)
+1. [Known issues](#known-issues)
 
 # Installation
 
@@ -38,3 +39,7 @@ Once the plugin is installed, its commands can be accessed by typing the plugin 
 The following video demonstrates how to use the plugin commands after installation.
 
 [![Usage guide video](http://img.youtube.com/vi/_UDrNsUkYzo/0.jpg)](https://youtu.be/_UDrNsUkYzo "Usage guide video")
+
+# Known issues
+
+It's still work-in-progress. There are known issues like this: https://github.com/Megidd/Feather/issues/2
