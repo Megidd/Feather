@@ -7,10 +7,10 @@ A Rhino3D plugin sponsored by [Nano3DTech](https://nano3dtech.com/).
 1. [Installation](#installation)
    1. [Trial](#trial)
    1. [Commercial](#commercial)
-1. [What it does](#what-it-does)
 1. [How to use](#how-to-use-it)
    1. [Video guide](#video-guide)
 1. [Known issues](#known-issues)
+1. [What it actually does](#what-it-actually-does)
 
 # Installation
 
@@ -36,10 +36,6 @@ If you like to purchase it, simply do these:
 
 ![Install commercial by plugin manager](RhinoCommon/doc/install-plugin-manager.svg "Install commercial by plugin manager")
 
-# What it does
-
-It helps you optimize 3D print workflow by FEA, finite element analysis. It means you can analyze your 3D model layer-by-layer almost the way it's 3D printed slice-by-slice.
-
 # How to use it
 
 Once the plugin is installed, its commands can be accessed by typing the plugin name on command line. Start typing `Feather` on Rhino3D command line to auto complete the plugin commands.
@@ -55,3 +51,7 @@ The following video demonstrates how to use the plugin commands after installati
 # Known issues
 
 It's still work-in-progress. There are known issues like this: https://github.com/Megidd/Feather/issues/2
+
+# What it actually does
+
+It helps you optimize 3D print workflow by FEA, finite element analysis. It means you can analyze your 3D model layer-by-layer almost the way it's 3D printed slice-by-slice.
