@@ -24,7 +24,11 @@ The following video demonstrates how to use the plugin commands after installati
 
 ## Trial
 
-If you like to try it, simply visit the plugin [page](https://www.food4rhino.com/en/app/feather).
+If you like to try it, simply visit the plugin [page](https://www.food4rhino.com/en/app/feather). Then log in and push the `install` button in front of latest released version.
+
+Alternatively, the plugin is accessible through the package manager UI via the `_PackageManager` command.
+
+![Install trial by `_PackageManager` command](doc/trial-install.svg "Install trial via `_PackageManager` command")
 
 ## Commercial
 
