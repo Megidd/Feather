@@ -28,7 +28,6 @@ If you like to purchase it, simply do these:
 1. Download the compressed file.
 1. Extract the compressed file.
 1. Use Rhino3D `PlugInManager` command to install the `RHP` file inside the extracted folder.
-1. Start typing `Feather` on Rhino3D command line to auto complete the plugin commands.
 
 ![Install commercial by plugin manager](RhinoCommon/doc/install-plugin-manager.svg "Install commercial by plugin manager")
 
@@ -38,7 +37,7 @@ It helps you optimize 3D print workflow by FEA, finite element analysis. It mean
 
 # How to use it
 
-Once the plugin is installed, its commands can be accessed by typing the plugin name on command line.
+Once the plugin is installed, its commands can be accessed by typing the plugin name on command line. Start typing `Feather` on Rhino3D command line to auto complete the plugin commands.
 
 ![Access commands](RhinoCommon/doc/commands.svg "How to access plugin commands")
 
