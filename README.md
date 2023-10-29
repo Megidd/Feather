@@ -18,7 +18,7 @@ A Rhino3D plugin sponsored by [Nano3DTech](https://nano3dtech.com/).
 
 If you like to try it, simply visit the plugin [page](https://www.food4rhino.com/en/app/feather). Then log in and push the `install` button in front of latest released version. Alternatively, the plugin is accessible through the package manager UI via the `_PackageManager` command.
 
-![Install trial by `_PackageManager` command](RhinoCommon/doc/trial-install.svg "Install trial via `_PackageManager` command")
+![Install trial by `_PackageManager` command](RhinoCommon/doc/install-package-manager.svg "Install trial via `_PackageManager` command")
 
 ## Commercial
 
