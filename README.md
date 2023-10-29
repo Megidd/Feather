@@ -19,7 +19,7 @@ It helps you optimize 3D print workflow by FEA, finite element analysis. It mean
 
 Once the plugin is installed, its commands can be accessed by typing the plugin name on command line.
 
-![Access commands](RhinoCommon/doc/commands.svg "How to access the commands")
+![Access commands](RhinoCommon/doc/commands.svg "How to access plugin commands")
 
 ## Video guide
 
