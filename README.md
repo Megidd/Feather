@@ -11,6 +11,8 @@ A Rhino3D plugin sponsored by [Nano3DTech](https://nano3dtech.com/).
    1. [Video guide](#video-guide)
 1. [Known issues](#known-issues)
 1. [What it actually does](#what-it-actually-does)
+   1. [Optimize 3D print process](#optimize-3d-print-process)
+   1. [Optimize design process](#optimize-design-process)
 
 # Installation
 
@@ -54,4 +56,21 @@ It's still work-in-progress. There are known issues like this: https://github.co
 
 # What it actually does
 
-It helps you optimize 3D print workflow by FEA, finite element analysis. It means you can analyze your 3D model layer-by-layer almost the way it's 3D printed slice-by-slice.
+This plugin has two commands helping with two aspects:
+
+1. `FeatherPrintable` command to optimize 3D print process.
+   * Making sure your 3D print will be done correctly.
+1. `FeatherLighten` command to optimize design process:
+   * Maximizing strength while minimizing the weight.
+
+## Optimize 3D print process
+
+A plugin command, i.e. `FeatherPrintable`, helps you optimize 3D print workflow by FEA, finite element analysis. It means you can analyze your 3D model layer-by-layer almost the way it's 3D printed slice-by-slice.
+
+At each layer, you will see a graph showing Von Mises stress throught the 3D model. You would be able to compare them with the ultimate stress of the resin material. This way, you can precisely estimate whether your 3D print process will collapse or not.
+
+## Optimize design process
+
+Another plugin command, i.e. `FeatherLighten`, helps you optimize the 3D model design. You can strengthen the model while decreasing its weight. The finite element analysis - FEA - along with topology optimization are used.
+
+An optimized 3D model will be generated. Some elements of the original 3D model are removed without affecting the required strength.
