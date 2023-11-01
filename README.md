@@ -60,7 +60,7 @@ This plugin has two commands helping with two aspects:
 
 1. `FeatherPrintable` command to optimize 3D print process.
    * Making sure your 3D print will be done correctly.
-1. `FeatherLighten` command to optimize design process:
+1. `FeatherLighten` command to optimize design process.
    * Making sure your 3D model has maximum strength and minimum weight.
 
 ## Optimize 3D print process
