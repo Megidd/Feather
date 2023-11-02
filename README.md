@@ -34,7 +34,9 @@ If you like to purchase it, simply do these:
 1. Visit the online shop [here](https://www.patreon.com/Megidd/shop).
 1. Download the compressed file.
 1. Extract the compressed file.
-1. Use Rhino3D `PlugInManager` command to install the `RHP` file inside the extracted folder.
+1. Use Rhino3D `PlugInManager` command to lunch the corresponding UI.
+1. Click on `Install...` button.
+1. Select the `RHP` file inside the extracted folder to install it.
 
 ![Install commercial by plugin manager](RhinoCommon/doc/install-plugin-manager.svg "Install commercial by plugin manager")
 
