@@ -70,7 +70,9 @@ This plugin has two commands helping with two aspects:
 
 A plugin command, i.e. `FeatherPrintable`, helps you optimize 3D print workflow by FEA, finite element analysis. It means you can analyze your 3D model layer-by-layer almost the way it's 3D printed slice-by-slice.
 
-At each layer, you will see a graph showing Von Mises stress throught the 3D model. You would be able to compare them with the ultimate stress of the resin material. This way, you can precisely estimate whether your 3D print process will collapse or not.
+![3D print process]( RhinoCommon/doc/3D-print-process.svg "3D print process")
+
+By `FeatherPrintable` command, at each layer, you will see a graph showing Von Mises stress throught the 3D model. You would be able to compare them with the ultimate stress of the resin material. This way, you can precisely estimate whether your 3D print process will collapse or not.
 
 ## Optimize design process
 
