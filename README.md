@@ -13,7 +13,7 @@ A Rhino3D plugin sponsored by [Nano3DTech](https://nano3dtech.com/).
 1. [What it actually does](#what-it-actually-does)
    1. [Optimize 3D print process](#optimize-3d-print-process)
        1. [3D print process](#3d-print-process)
-       1. [3D print process simulation](#3d-print-process-simulation)
+       1. [3D print process analysis](#3d-print-process-analysis)
    1. [Optimize design process](#optimize-design-process)
 
 # Installation
@@ -76,7 +76,7 @@ A plugin command, i.e. `FeatherPrintable`, helps you optimize 3D print workflow 
 
 ![3D print process]( RhinoCommon/doc/3D-print-process.svg "3D print process")
 
-### 3D print process simulation
+### 3D print process analysis
 
 By `FeatherPrintable` command, at each layer, you will see a graph showing Von Mises stress throught the 3D model. You would be able to compare them with the ultimate stress of the resin material. This way, you can precisely estimate whether your 3D print process will collapse or not.
 
