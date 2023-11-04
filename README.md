@@ -78,7 +78,9 @@ A plugin command, i.e. `FeatherPrintable`, helps you optimize 3D print workflow 
 
 ### 3D print process analysis
 
-By `FeatherPrintable` command, at each layer, you will see a graph showing Von Mises stress throught the 3D model. You would be able to compare them with the ultimate stress of the resin material. This way, you can precisely estimate whether your 3D print process will collapse or not.
+By `FeatherPrintable` command, at each layer, you will see a graph showing Von Mises stress throught the 3D model. You would be able to compare them with the ultimate stress of the resin material. This way, you can precisely estimate whether your 3D print process will collapse or not. For example, figure below indicates the analysis for a layer.
+
+![3D print process analysis]( RhinoCommon/doc/3D-print-process-analysis.svg "3D print process analysis")
 
 ## Optimize design process
 
