@@ -65,8 +65,7 @@ This plugin has two commands helping with two aspects:
 1. `FeatherPrintable` command to optimize 3D print process.
    * Making sure your 3D print will be done correctly.
 1. `FeatherLighten` command to optimize design process.
-   * Making sure your 3D model has maximum strength and minimum weight.
-   * This command is not available yet. It's being developed.
+   * Making sure your 3D model has maximum strength and minimum weight[^1].
 
 ## Optimize 3D print process
 
@@ -84,6 +83,8 @@ By `FeatherPrintable` command, at each layer, you will see a graph showing the V
 
 ## Optimize design process
 
-Another plugin command, i.e. `FeatherLighten`, helps you optimize the 3D model design. You can strengthen the model while decreasing its weight. The finite element analysis - FEA - along with topology optimization are used.
+Another plugin command, i.e. `FeatherLighten`, helps you optimize the 3D model design[^1]. You can strengthen the model while decreasing its weight. The finite element analysis - FEA - along with topology optimization are used.
 
 An optimized 3D model will be generated. Some elements of the original 3D model are removed without affecting the required strength.
+
+[^1]: The `FeatherLighten` command is not available yet. It's being developed.
