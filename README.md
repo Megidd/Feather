@@ -87,4 +87,4 @@ Another plugin command, i.e. `FeatherLighten`, helps you optimize the 3D model d
 
 An optimized 3D model will be generated. Some elements of the original 3D model are removed without affecting the required strength.
 
-[^1]: The `FeatherLighten` command is not available yet. It's being developed.
+[^1]: This command is not available yet. It's being developed.
