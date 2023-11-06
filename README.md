@@ -81,7 +81,7 @@ By `FeatherPrintable` command, at each layer, you will see a graph showing the V
 
 ![3D print process analysis]( RhinoCommon/doc/3D-print-process-analysis.svg "3D print process analysis")
 
-The comparison of analysis for different layers of a sample 3D model is displayed below. The figure shows the 3D model being printed along the `+Z` axis. The only force acting upon the 3D model is gravity in `+Z` direction. The very first layer of 3D model is touching the print floor. So, the first layer is a restrained boundary condition.
+The comparison of analysis for different layers of a sample 3D model is displayed below. The figure shows the 3D model being printed along the `+Z` axis. The only force acting upon the 3D model is gravity in `+Z` direction. It should be noted that 3D print process is usually done by a print floor moving up layer-by-layer while creating the 3D model in an upside-down fasion. The very first layer of 3D model is touching the print floor. So, the first layer is a restrained boundary condition.
 
 ![Analysis at different layers]( RhinoCommon/doc/3d-print-process-analysis-compare.svg "Analysis at different layers")
 
