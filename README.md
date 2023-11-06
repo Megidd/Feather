@@ -87,4 +87,10 @@ Another plugin command, i.e. `FeatherLighten`, helps you optimize the 3D model d
 
 An optimized 3D model will be generated. Some elements of the original 3D model are removed without affecting the required strength.
 
+![Topology optimization]( RhinoCommon/doc/BESO.png "Topology optimization")
+
+When its development is finished, it will provide an alternative for what Frustum does. The figure below is taken from Frustum.
+
+![How Frustum optimizes 3D models]( RhinoCommon/doc/Frustum.webp " How Frustum optimizes 3D models")
+
 [^1]: This command is not available yet. It's being developed.
