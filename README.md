@@ -14,6 +14,7 @@ A Rhino3D plugin sponsored by [Nano3DTech](https://nano3dtech.com/).
    1. [Optimize 3D print process](#optimize-3d-print-process)
        1. [3D print process](#3d-print-process)
        1. [3D print process analysis](#3d-print-process-analysis)
+       1. [Verification by Abaqus](#verification-by-abaqus)
    1. [Optimize design process](#optimize-design-process)
 
 # Installation
@@ -84,6 +85,12 @@ By `FeatherPrintable` command, at each layer, you will see a graph showing the V
 The comparison of analysis for different layers of a sample 3D model is displayed below. The figure shows the 3D model being printed along the `+Z` axis. The only force acting upon the 3D model is gravity in `+Z` direction. It should be noted that 3D print process is usually done by a print floor moving up layer-by-layer while creating the 3D model in an upside-down fasion. The very first layer of 3D model is touching the print floor. So, the first layer is a restrained boundary condition.
 
 ![Analysis at different layers]( RhinoCommon/doc/3d-print-process-analysis-compare.svg "Analysis at different layers")
+
+### Verification by Abaqus
+
+The verification is done by Abaqus software. For a single layer, FEAther result is compared with Abaqus one. They are matching. The left side is the FEAther result for a single layer and the right side is the Abaqus one.
+
+![Verification by Abaqus]( RhinoCommon/doc/Abaqus-verification.svg "Verification by Abaqus")
 
 ## Optimize design process
 
