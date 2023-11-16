@@ -116,9 +116,7 @@ This command helps you optimize the 3D model for the casting process[^1].
 
 ## `FeatherUsable` command
 
-This command helps you optimize the usability of 3D model[^1]. You can strengthen the model while decreasing its weight. The finite element analysis - FEA - along with topology optimization are the technologies under the hood.
-
-An optimized 3D model will be generated. Some elements of the original 3D model are removed without affecting the required strength.
+This command helps you optimize the usability of 3D model[^1]. You can strengthen the model while decreasing its weight. The finite element analysis - FEA - along with topology optimization are the technologies under the hood. An optimized 3D model will be generated. Some elements of the original 3D model are removed without affecting the required strength.
 
 ![Topology optimization]( RhinoCommon/doc/BESO.png "Topology optimization")
 
