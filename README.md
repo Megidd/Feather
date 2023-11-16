@@ -17,6 +17,7 @@ A Rhino3D plugin sponsored by [Nano3DTech](https://nano3dtech.com/).
        1. [3D print process analysis](#3d-print-process-analysis)
        1. [Verification by Abaqus](#verification-by-abaqus)
    1. [`FeatherCastable` command](#feathercastable-command)
+       1. [Casting process](#casting-process)
    1. [`FeatherUsable` command](#featherusable-command)
 
 # Installation
@@ -117,6 +118,22 @@ This command helps you optimize the 3D model for the casting process[^1].
 ### Casting process
 
 The casting is used by multiple industries. Let's focus on the jewelry industry which employs it for mass production. At the jewelry workshops, the following workflow is employed by the workshop staff to manufacture the jewelry design in large quantities.
+
+A digital design is created by the artistic designer. An experienced expert will check the digital design. To check for manufacturing and consumption bugs. A 3D print of the digital design is printed as the prototype. Plastic samples are produced by replicating the 3D printed prototype.
+
+![Jewelry model]( RhinoCommon/doc/jewelry-model.svg "Jewelry model")
+
+Sprues and other routes are added to the plastic samples to help with the metal casting. Sprues are added before attaching the plastic samples to a plastic tree. Plastic samples will be connected to the tree branches through connection points.
+
+![Sprues are attached to jewelry model]( RhinoCommon/doc/jewelry-sprue.svg "Sprues are attached to jewelry model")
+
+Plastic samples are attached to a plastic tree. The plastic samples are directly connected to tree branches. The tree branches are connected to the tree trunk. The tree would provide the necessary routes for the metal casting process.
+
+![Jewelry tree]( RhinoCommon/doc/jewelry-tree.svg "Jewelry tree")
+
+A flask cylinder would be the container for the plastic tree. Gypsum plaster would be poured into the flask to contain around the plastic tree. An oven is used to heat the flask and create negative/empty volumes. Casting of the gold metal is done into the empty volumes of the flask. Post processing and cleanup is done.
+
+![Jewelry flask]( RhinoCommon/doc/jewelry-flask.svg "Jewelry flask")
 
 ## `FeatherUsable` command
 
