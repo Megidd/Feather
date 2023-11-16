@@ -81,7 +81,7 @@ This plugin offers multiple commands helping with multiple aspects of manufactur
    * Making sure your 3D print will be done correctly.
 1. `FeatherCastable` command to optimize metal casting process.
    * Making sure your 3D model is suitable for metal casting while having the minimum weight[^1].
-1. `FeatherLighten` command to optimize usage process.
+1. `FeatherUsable` command to optimize usage process.
    * Making sure your 3D model has maximum strength and minimum weight[^1].
 
 ## Optimize 3D print process
@@ -114,7 +114,7 @@ A plugin command, i.e. `FeatherCastable`, helps you optimize the 3D model for th
 
 ## Optimize usage process
 
-Another plugin command, i.e. `FeatherLighten`, helps you optimize the 3D model design[^1]. You can strengthen the model while decreasing its weight. The finite element analysis - FEA - along with topology optimization are used.
+Another plugin command, i.e. `FeatherUsable`, helps you optimize the 3D model design[^1]. You can strengthen the model while decreasing its weight. The finite element analysis - FEA - along with topology optimization are used.
 
 An optimized 3D model will be generated. Some elements of the original 3D model are removed without affecting the required strength.
 
