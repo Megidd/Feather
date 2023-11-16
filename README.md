@@ -10,6 +10,7 @@ A Rhino3D plugin sponsored by [Nano3DTech](https://nano3dtech.com/).
 1. [How to use](#how-to-use-it)
    1. [Video guide](#video-guide)
 1. [Known issues](#known-issues)
+1. [Why this plugin](#why-this-plugin)
 1. [What it actually does](#what-it-actually-does)
    1. [Optimize 3D print process](#optimize-3d-print-process)
        1. [3D print process](#3d-print-process)
@@ -59,12 +60,26 @@ The following video demonstrates how to use the plugin commands after installati
 
 It's still work-in-progress. There are known issues like this: https://github.com/Megidd/Feather/issues/2
 
+# Why this plugin?
+
+The digital designers use 3D software like Rhino. But, they don’t have any engineering knowledge to predict if their designs would be acceptable regarding:
+
+1. Manufacturing.
+   1. 3D print process for prototyping.
+   1. Casting process for mass production.
+1. Consumption.
+   1. Usage process under environment loads.
+
+The manufacturing process consists of prototyping and mass production. It requires engineering knowledge to figure out if a digital 3D design would be acceptable. Moreover, predicting the suitability for consumption requires engineering analysis. The 3D designers are digital artists. They are not equipped with the required engineering knowledge to predict the vulnerability of their digital designs. This plugin tries to bridge this gap by providing a convenient tool for digital artists.
+
 # What it actually does
 
-This plugin has two commands helping with two aspects:
+This plugin offers multiple commands helping with multiple aspects of manufacturing of 3D designs:
 
 1. `FeatherPrintable` command to optimize 3D print process.
    * Making sure your 3D print will be done correctly.
+1. `FeatherCastable` command to optimize metal casting process.
+   * Making sure your 3D model is suitable for metal casting while having the minimum weight[^1].
 1. `FeatherLighten` command to optimize design process.
    * Making sure your 3D model has maximum strength and minimum weight[^1].
 
@@ -91,6 +106,10 @@ The comparison of analysis for different layers of a sample 3D model is displaye
 The verification is done by Abaqus software. For a single layer, FEAther result is compared with Abaqus one. They are matching. The left side is the FEAther result for a single layer and the right side is the Abaqus one.
 
 ![Verification by Abaqus]( RhinoCommon/doc/Abaqus-verification.svg "Verification by Abaqus")
+
+## Optimize casting process
+
+A plugin command, i.e. `FeatherCastable`, helps you optimize the 3D model for the casting process.
 
 ## Optimize design process
 
