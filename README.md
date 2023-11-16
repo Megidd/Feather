@@ -113,7 +113,7 @@ The verification is done by Abaqus software. For a single layer, FEAther result 
 
 ## `FeatherCastable` command
 
-This command helps you optimize the 3D model for the casting process[^1].
+This command helps you optimize the 3D model for the casting process[^1]. For example, you will be informed if the thickness of 3D model parts are too thin depending upon the casting technology being used among vaccum, centrifuge, and induction technologies.
 
 ### Casting process
 
