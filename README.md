@@ -11,13 +11,13 @@ A Rhino3D plugin sponsored by [Nano3DTech](https://nano3dtech.com/).
    1. [Video guide](#video-guide)
 1. [Known issues](#known-issues)
 1. [Why this plugin](#why-this-plugin)
-1. [What it actually does](#what-it-actually-does)
-   1. [Optimize 3D print process](#optimize-3d-print-process)
+1. [Commands](#commands)
+   1. [`FeatherPrintable` command](#featherprintable-command)
        1. [3D print process](#3d-print-process)
        1. [3D print process analysis](#3d-print-process-analysis)
        1. [Verification by Abaqus](#verification-by-abaqus)
-   1. [Optimize casting process](#optimize-casting-process)
-   1. [Optimize usage process](#optimize-usage-process)
+   1. [`FeatherCastable` command](#feathercastable-command)
+   1. [`FeatherUsable` command](#featherusable-command)
 
 # Installation
 
@@ -73,7 +73,7 @@ The digital designers use 3D software like Rhino. But, they don’t have any eng
 
 The manufacturing process consists of prototyping and mass production. It requires engineering knowledge to figure out if a digital 3D design would be acceptable. Moreover, predicting the suitability for consumption requires engineering analysis. The 3D designers are digital artists. They are not equipped with the required engineering knowledge to predict the vulnerability of their digital designs. This plugin tries to bridge this gap by providing a convenient tool for digital artists.
 
-# What it actually does
+# Commands
 
 This plugin offers multiple commands helping with multiple aspects of manufacturing of 3D designs:
 
@@ -84,11 +84,13 @@ This plugin offers multiple commands helping with multiple aspects of manufactur
 1. `FeatherUsable` command to optimize usage process.
    * Making sure your 3D model has maximum strength and minimum weight[^1].
 
-## Optimize 3D print process
+## `FeatherPrintable` command
+
+This command helps you with the 3D print workflow by FEA, finite element analysis. It means you can analyze your 3D model layer-by-layer almost the way it's 3D printed slice-by-slice.
 
 ### 3D print process
 
-A plugin command, i.e. `FeatherPrintable`, helps you optimize 3D print workflow by FEA, finite element analysis. It means you can analyze your 3D model layer-by-layer almost the way it's 3D printed slice-by-slice. The 3D print process is usually done by a print floor moving up from a resin tank. The 3D model is solidified layer-by-layer and is created upside-down.
+The 3D print process is usually done by a print floor moving up from a resin tank. The 3D model is solidified layer-by-layer and is created upside-down.
 
 ![3D print process]( RhinoCommon/doc/3D-print-process.svg "3D print process")
 
@@ -108,13 +110,13 @@ The verification is done by Abaqus software. For a single layer, FEAther result 
 
 ![Verification by Abaqus]( RhinoCommon/doc/Abaqus-verification.svg "Verification by Abaqus")
 
-## Optimize casting process
+## `FeatherCastable` command
 
-A plugin command, i.e. `FeatherCastable`, helps you optimize the 3D model for the casting process[^1].
+This command helps you optimize the 3D model for the casting process[^1].
 
-## Optimize usage process
+## `FeatherUsable` command
 
-Another plugin command, i.e. `FeatherUsable`, helps you optimize the 3D model usability[^1]. You can strengthen the model while decreasing its weight. The finite element analysis - FEA - along with topology optimization are the technologies under the hood.
+This command helps you optimize the usability of 3D model[^1]. You can strengthen the model while decreasing its weight. The finite element analysis - FEA - along with topology optimization are the technologies under the hood.
 
 An optimized 3D model will be generated. Some elements of the original 3D model are removed without affecting the required strength.
 
