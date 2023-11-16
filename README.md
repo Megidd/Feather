@@ -16,6 +16,7 @@ A Rhino3D plugin sponsored by [Nano3DTech](https://nano3dtech.com/).
        1. [3D print process](#3d-print-process)
        1. [3D print process analysis](#3d-print-process-analysis)
        1. [Verification by Abaqus](#verification-by-abaqus)
+   1. [Optimize casting process](#optimize-casting-process)
    1. [Optimize design process](#optimize-design-process)
 
 # Installation
