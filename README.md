@@ -109,7 +109,7 @@ The verification is done by Abaqus software. For a single layer, FEAther result 
 
 ## Optimize casting process
 
-A plugin command, i.e. `FeatherCastable`, helps you optimize the 3D model for the casting process.
+A plugin command, i.e. `FeatherCastable`, helps you optimize the 3D model for the casting process[^1].
 
 ## Optimize design process
 
