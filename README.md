@@ -114,6 +114,10 @@ The verification is done by Abaqus software. For a single layer, FEAther result 
 
 This command helps you optimize the 3D model for the casting process[^1].
 
+### Casting process
+
+The casting is used by multiple industries. Let's focus on the jewelry industry which employs it for mass production. At the jewelry workshops, the following workflow is employed by the workshop staff to manufacture the jewelry design in large quantities.
+
 ## `FeatherUsable` command
 
 This command helps you optimize the usability of 3D model[^1]. You can strengthen the model while decreasing its weight. The finite element analysis - FEA - along with topology optimization are the technologies under the hood. An optimized 3D model will be generated. Some elements of the original 3D model are removed without affecting the required strength.
