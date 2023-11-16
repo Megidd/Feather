@@ -114,7 +114,7 @@ A plugin command, i.e. `FeatherCastable`, helps you optimize the 3D model for th
 
 ## Optimize usage process
 
-Another plugin command, i.e. `FeatherUsable`, helps you optimize the 3D model design[^1]. You can strengthen the model while decreasing its weight. The finite element analysis - FEA - along with topology optimization are used.
+Another plugin command, i.e. `FeatherUsable`, helps you optimize the 3D model usability[^1]. You can strengthen the model while decreasing its weight. The finite element analysis - FEA - along with topology optimization are used.
 
 An optimized 3D model will be generated. Some elements of the original 3D model are removed without affecting the required strength.
 
