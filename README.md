@@ -17,7 +17,7 @@ A Rhino3D plugin sponsored by [Nano3DTech](https://nano3dtech.com/).
        1. [3D print process analysis](#3d-print-process-analysis)
        1. [Verification by Abaqus](#verification-by-abaqus)
    1. [Optimize casting process](#optimize-casting-process)
-   1. [Optimize design process](#optimize-design-process)
+   1. [Optimize usage process](#optimize-usage-process)
 
 # Installation
 
@@ -81,7 +81,7 @@ This plugin offers multiple commands helping with multiple aspects of manufactur
    * Making sure your 3D print will be done correctly.
 1. `FeatherCastable` command to optimize metal casting process.
    * Making sure your 3D model is suitable for metal casting while having the minimum weight[^1].
-1. `FeatherLighten` command to optimize design process.
+1. `FeatherLighten` command to optimize usage process.
    * Making sure your 3D model has maximum strength and minimum weight[^1].
 
 ## Optimize 3D print process
@@ -112,7 +112,7 @@ The verification is done by Abaqus software. For a single layer, FEAther result 
 
 A plugin command, i.e. `FeatherCastable`, helps you optimize the 3D model for the casting process[^1].
 
-## Optimize design process
+## Optimize usage process
 
 Another plugin command, i.e. `FeatherLighten`, helps you optimize the 3D model design[^1]. You can strengthen the model while decreasing its weight. The finite element analysis - FEA - along with topology optimization are used.
 
