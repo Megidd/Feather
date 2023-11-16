@@ -79,7 +79,7 @@ This plugin offers multiple commands helping with multiple aspects of manufactur
 
 1. `FeatherPrintable` command to optimize 3D print process.
    * Making sure your 3D print will be done correctly.
-1. `FeatherCastable` command to optimize metal casting process.
+1. `FeatherCastable` command to optimize casting process.
    * Making sure your casting will be done correctly[^1].
 1. `FeatherUsable` command to optimize usage process.
    * Making sure your 3D model has maximum strength and minimum weight[^1].
