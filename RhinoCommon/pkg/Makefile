@@ -43,6 +43,7 @@ install:
 
 # To create plugin package.
 pkg:
+	cd %userprofile%\source\repos\Feather\RhinoCommon\pkg\dist
 	"C:\Program Files\Rhino 7\System\Yak.exe" build --platform win
 
 # To log in before push to server, if not already logged in:
