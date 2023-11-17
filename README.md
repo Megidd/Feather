@@ -24,7 +24,7 @@ A Rhino3D plugin sponsored by [Nano3DTech](https://nano3dtech.com/).
 
 ## Trial
 
-If you like to try it, simply visit the plugin [page](https://www.food4rhino.com/en/app/feather). Then log in and push the `install` button in front of latest released version. Or alternatively, do these:
+If you like to try it, simply visit the [plugin page](https://www.food4rhino.com/en/app/feather). Then log in and push the `install` button in front of latest released version. Or alternatively, do these:
 
 1. Use `_PackageManager` command on Rhino3D commandline.
 1. Search for plugin name i.e. `Feather`.
