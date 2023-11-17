@@ -139,7 +139,7 @@ A flask cylinder would be the container for the plastic tree. Gypsum plaster wou
 
 By `FeatherCastable` command, you can analyze the casting process throughout your 3D model by simulating the mold filling and the fluid flow[^1]. Mold filling affects the quality of a casting. The fluid flow phenomena are closely related to the casting quality and surface finish. The dimensional accuracy of a casting and die life is also influenced by the fluid flow in the mold cavity. The metal flow pattern affects the temperature distribution of the mold cavity, which in turn would affect the solidification process.
 
-Modeling of the mold filling could be complex due to multiple physical phenomena which need to be considered such as free surface flow, turbulence, surface tension and combination of fluid flow with heat transfer. To take all the necessary parameters into account, the simulation tends to become complicated.
+Modeling of the mold filling could be complex due to multiple physical phenomena which need to be considered such as free surface flow, turbulence, surface tension and combination of fluid flow with heat transfer. To take all the necessary parameters into account, the simulation tends to become complicated. When the development is done, a reliable analysis tool will be provided.
 
 ## `FeatherUsable` command
 
