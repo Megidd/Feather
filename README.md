@@ -135,6 +135,12 @@ A flask cylinder would be the container for the plastic tree. Gypsum plaster wou
 
 ![Jewelry flask]( RhinoCommon/doc/jewelry-flask.svg "Jewelry flask")
 
+### Casting process analysis
+
+By `FeatherCastable` command, you can analyze the casting process throughout your 3D model by simulating the mold filling and the fluid flow[^1]. Mold filling affects the quality of a casting. The fluid flow phenomena are closely related to the casting quality and surface finish. The dimensional accuracy of a casting and die life is also influenced by the fluid flow in the mold cavity. The metal flow pattern affects the temperature distribution of the mold cavity, which in turn would affect the solidification process.
+
+Modeling of the mold filling could be complex due to multiple physical phenomena which need to be considered such as free surface flow, turbulence, surface tension and combination of fluid flow with heat transfer. To take all the necessary parameters into account, the simulation tends to become complicated.
+
 ## `FeatherUsable` command
 
 This command helps you optimize the usability of 3D model[^1]. You can strengthen the model while decreasing its weight. The finite element analysis - FEA - along with topology optimization are the technologies under the hood. An optimized 3D model will be generated. Some elements of the original 3D model are removed without affecting the required strength.
