@@ -9,7 +9,6 @@ using System.Text.Json;
 
 namespace Feather
 {
-    [CommandStyle(Style.Hidden)]
     public class FeatherLighten : Command
     {
         public FeatherLighten()
