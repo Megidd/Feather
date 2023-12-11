@@ -33,14 +33,6 @@ namespace Feather
                 return Result.Failure;
             }
 
-            string message = string.Format("Document model unit system is set to {0}. It will affect the result. Is {0} unit acceptable?", doc.ModelUnitSystem.ToString().ToLower());
-            bool isUnitAcceptable = Helper.GetYesNoFromUser(message);
-            if (!isUnitAcceptable)
-            {
-                RhinoApp.WriteLine("Please fix the document model unit system and re-run this command.");
-                return Result.Failure;
-            }
-
             string stlPth = Path.GetTempPath() + "input.stl"; // Input object to be saved as STL.
 
             RhinoObject inObj = Helper.GetInputStl(doc.ModelUnitSystem, stlPth);
