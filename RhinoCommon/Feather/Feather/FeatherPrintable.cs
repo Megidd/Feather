@@ -31,8 +31,7 @@ namespace Feather
                     return Result.Failure;
                 }
 
-                string PathStl = Path.GetTempPath() + "input.stl"; // Input object to be saved as STL.
-                RhinoObject obj = Helper.GetInputStl(doc.ModelUnitSystem, PathStl);
+                RhinoObject obj = Helper.GetInputStl(doc.ModelUnitSystem, Paths.stl);
                 if (obj == null)
                 {
                     return Result.Failure;
@@ -130,7 +129,7 @@ namespace Feather
                 RhinoApp.WriteLine("First voxel layer on Z axis is considered restraint i.e. in contact with 3D print floor.");
 
                 Dictionary<string, dynamic> specs = new Dictionary<string, dynamic>();
-                specs.Add("PathStl", PathStl);
+                specs.Add("PathStl", Paths.stl);
                 specs.Add("MassDensity", MassDensity); // (N*s2/mm4)
                 specs.Add("YoungModulus", YoungModulus); // MPa (N/mm2)
                 specs.Add("PoissonRatio", PoissonRatio);
@@ -145,17 +144,16 @@ namespace Feather
                 specs.Add("ModelUnitSystem", doc.ModelUnitSystem.ToString());
                 specs.Add("ModelUnitSystemOfSavedStlFile", Helper.unitOfStlFile.ToString());
 
-                string specsPth = Path.GetTempPath() + "specs.json";
                 string specsJson = JsonSerializer.Serialize(specs);
-                File.WriteAllText(specsPth, specsJson);
+                File.WriteAllText(Paths.specs, specsJson);
 
                 // Prepare arguments as text fields.
                 string args = "";
                 args += "printable";
                 args += " ";
-                args += specsPth;
+                args += Paths.specs;
 
-                Helper.RunLogic("Cotton.exe", args, PostProcess);
+                Helper.RunLogic(Paths.cotton, args, PostProcess);
 
                 RhinoApp.WriteLine("Process started. Please wait...");
 
