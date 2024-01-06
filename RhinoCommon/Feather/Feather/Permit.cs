@@ -1,13 +1,4 @@
-﻿using Rhino;
-using Rhino.Commands;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Feather
+﻿namespace Feather
 {
     internal class Permit
     {
@@ -18,7 +9,7 @@ namespace Feather
             args += "permit";
 
             int exitCode = Helper.RunLogicWithLogAndWait("Cotton.exe", args);
-            return exitCode==0;
+            return exitCode == 0;
         }
     }
 }

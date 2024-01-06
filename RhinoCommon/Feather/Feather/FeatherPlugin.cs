@@ -1,7 +1,4 @@
-﻿using Rhino;
-using System;
-
-namespace Feather
+﻿namespace Feather
 {
     ///<summary>
     /// <para>Every RhinoCommon .rhp assembly must have one and only one PlugIn-derived

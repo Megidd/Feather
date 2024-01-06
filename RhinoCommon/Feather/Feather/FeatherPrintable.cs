@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Rhino;
+using Rhino.Commands;
+using Rhino.DocObjects;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
-using Rhino;
-using Rhino.Commands;
-using Rhino.DocObjects;
 
 namespace Feather
 {
