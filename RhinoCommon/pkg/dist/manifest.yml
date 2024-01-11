@@ -1,12 +1,13 @@
 ---
 name: FEAther
-version: 1.6.0
+version: 1.7.0
 authors:
 - www.nano3dtech.com
 description: 3D print simulation. https://github.com/Megidd/Feather
 url: https://github.com/Megidd/Feather
 keywords:
 - 3D-print
+- Additive-manufacturing
 - Simulation
 - Finite-element-analysis
 - FEA

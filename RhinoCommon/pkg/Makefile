@@ -5,7 +5,7 @@
 
 build:
 	cd %userprofile%\repos\Feather\RhinoCommon\Feather
-	dotnet build Feather.sln -c Release -f net48 -p:Version=1.6.0.0
+	dotnet build Feather.sln -c Release -f net48 -p:Version=1.7.0.0
 
 # To delete outdated files.
 clean:
