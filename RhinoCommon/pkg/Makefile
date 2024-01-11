@@ -9,7 +9,7 @@ build:
 
 # To delete outdated files.
 clean:
-	cd %userprofile%\source\repos\Feather\RhinoCommon\pkg\dist
+	cd %userprofile%\repos\Feather\RhinoCommon\pkg\dist
 	del Cotton.exe 2> NUL
 	del feather-*.yak 2> NUL
 	del Feather.rhp 2> NUL
@@ -23,16 +23,16 @@ trial:
 	cd %userprofile%\go\src\Cotton
 	go clean
 	go build -tags trial
-	copy "Cotton.exe" "%userprofile%\source\repos\Feather\RhinoCommon\Feather\Feather\bin\Release\net48"
-	copy "Cotton.exe" "%userprofile%\source\repos\Feather\RhinoCommon\Feather\Feather\bin\Debug\net48"
+	copy "Cotton.exe" "%userprofile%\repos\Feather\RhinoCommon\Feather\Feather\bin\Release\net48"
+	copy "Cotton.exe" "%userprofile%\repos\Feather\RhinoCommon\Feather\Feather\bin\Debug\net48"
 
 # To build strategic binary.
 commercial:
 	cd %userprofile%\go\src\Cotton
 	go clean
 	go build -tags commercial
-	copy "Cotton.exe" "%userprofile%\source\repos\Feather\RhinoCommon\Feather\Feather\bin\Release\net48"
-	copy "Cotton.exe" "%userprofile%\source\repos\Feather\RhinoCommon\Feather\Feather\bin\Debug\net48"
+	copy "Cotton.exe" "%userprofile%\repos\Feather\RhinoCommon\Feather\Feather\bin\Release\net48"
+	copy "Cotton.exe" "%userprofile%\repos\Feather\RhinoCommon\Feather\Feather\bin\Debug\net48"
 
 # To create the manifest file, if `manifest.yml` doesn't exist already.
 # If manifest exists, the version must be incremented before each push to server.
@@ -41,13 +41,13 @@ manifest:
 
 # Install the binaries inside the distribution folder.
 install:
-	cd %userprofile%\source\repos\Feather\RhinoCommon\pkg\dist
-	copy "%userprofile%\source\repos\Feather\RhinoCommon\Feather\Feather\bin\Release\net48\*" .
+	cd %userprofile%\repos\Feather\RhinoCommon\pkg\dist
+	copy "%userprofile%\repos\Feather\RhinoCommon\Feather\Feather\bin\Release\net48\*" .
 	del Feather.pdb
 
 # To create plugin package.
 pkg:
-	cd %userprofile%\source\repos\Feather\RhinoCommon\pkg\dist
+	cd %userprofile%\repos\Feather\RhinoCommon\pkg\dist
 	"C:\Program Files\Rhino 7\System\Yak.exe" build --platform win
 
 # To log in before push to server, if not already logged in:
@@ -56,7 +56,7 @@ login:
 
 # To push plugin package to Rhino3D server.
 push:
-	cd %userprofile%\source\repos\Feather\RhinoCommon\pkg\dist
+	cd %userprofile%\repos\Feather\RhinoCommon\pkg\dist
 	echo off > temp.bat
     for /f "delims=" %%i in ('dir /b /od /a-d feather-*-win.yak') do echo "C:\Program Files\Rhino 7\System\Yak.exe" push "%%i" > temp.bat
     call temp.bat
@@ -68,7 +68,7 @@ search:
 
 # To create a ZIP file to be uploaded to Patreon shop.
 zip:
-	cd %userprofile%\source\repos\Feather\RhinoCommon\pkg
+	cd %userprofile%\repos\Feather\RhinoCommon\pkg
 	powershell Compress-Archive -Force dist FEAther.zip
 
 # To create and distribute the trial release as a Rhino3D plugin package.
