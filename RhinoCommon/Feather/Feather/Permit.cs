@@ -8,7 +8,7 @@
             string args = "";
             args += "permit";
 
-            int exitCode = Helper.RunLogicWithLogAndWait("Cotton.exe", args);
+            int exitCode = Helper.RunLogicWithLogAndWait(Paths.cotton, args);
             return exitCode == 0;
         }
     }
