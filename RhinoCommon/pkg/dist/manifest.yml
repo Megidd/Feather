@@ -1,24 +1,15 @@
 ---
 name: FEAther
-version: 1.5
+version: 1.6.0
 authors:
 - www.nano3dtech.com
-description: Prepare 3D designs for manufacturing and consumption. https://github.com/Megidd/Feather
+description: 3D print simulation. https://github.com/Megidd/Feather
 url: https://github.com/Megidd/Feather
 keywords:
-- 3D-design
-- Manufacturing
 - 3D-print
+- Simulation
 - Finite-element-analysis
 - FEA
 - Printability
 - Collapse
-- SLA
-- DLP
-- Casting
-- Mold-filling
-- Solidification
-- Simulation
-- Topology-optimization
-- Generative-design
 icon: icon.png
