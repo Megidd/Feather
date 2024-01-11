@@ -317,7 +317,7 @@ namespace Feather
 
         private static Process cmd;
         public delegate void PostProcess(object sender, EventArgs e);
-        public static void RunLogic(string exePath, string args, PostProcess pp)
+        public static void RunLogicAsAdmin(string exePath, string args, PostProcess pp)
         {
             cmd = new Process();
 
@@ -339,6 +339,35 @@ namespace Feather
                     // Run with admin privileges to avoid non-responsive CGX window.
                     cmd.StartInfo.Verb = "runas";
                 }
+                cmd.EnableRaisingEvents = true;
+                cmd.Exited += new EventHandler(cmd_Exited);
+                cmd.Exited += new EventHandler(pp);
+
+                cmd.Start();
+            }
+
+            catch (Exception ex)
+            {
+                RhinoApp.WriteLine("Error on process start: {0}", ex.Message);
+            }
+        }
+
+        public static void RunLogic(string exePath, string args, PostProcess pp)
+        {
+            cmd = new Process();
+
+            try
+            {
+                cmd.StartInfo.FileName = exePath;
+                cmd.StartInfo.Arguments = args;
+                cmd.StartInfo.UseShellExecute = true;
+                cmd.StartInfo.CreateNoWindow = false;
+                cmd.StartInfo.RedirectStandardOutput = false;
+                cmd.StartInfo.RedirectStandardError = false;
+                cmd.StartInfo.RedirectStandardInput = false;
+
+                // Don't run as admin.
+
                 cmd.EnableRaisingEvents = true;
                 cmd.Exited += new EventHandler(cmd_Exited);
                 cmd.Exited += new EventHandler(pp);
