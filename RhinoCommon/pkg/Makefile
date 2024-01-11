@@ -10,13 +10,14 @@ build:
 # To delete outdated files.
 clean:
 	cd %userprofile%\repos\Feather\RhinoCommon\pkg\dist
-	del Cotton.exe 2> NUL
-	del feather-*.yak 2> NUL
-	del Feather.rhp 2> NUL
-	del System* 2> NUL
-	del Microsoft* 2> NUL
-	del temp.bat 2> NUL
+	del *.yak 2> NUL
+	del *.rhp 2> NUL
+	del *.dll 2> NUL
+	del *.exe 2> NUL
+	del *.bat 2> NUL
 	del NULL 2> NUL
+	del *.fbd 2> NUL
+	del *.pdb 2> NUL
 
 # To build strategic binary.
 trial:
