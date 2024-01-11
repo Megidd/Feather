@@ -73,7 +73,7 @@ zip:
 	powershell Compress-Archive -Force dist FEAther.zip
 
 # To create and distribute the trial release as a Rhino3D plugin package.
-distribute-trial: clean trial install pkg push search
+distribute-trial: build clean trial install pkg push search
 
 # To create and distribute the commercial release as a Rhino3D plugin ZIP file.
-distribute-commercial: clean commercial install zip
+distribute-commercial: build clean commercial install zip
