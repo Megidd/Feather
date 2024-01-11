@@ -3,6 +3,10 @@
 ### By Windows start menu, launch:
 ### `Developer Command Prompt for VS 2022`
 
+build:
+	cd %userprofile%\repos\Feather\RhinoCommon\Feather
+	dotnet build Feather.sln -c Release -f net48 -p:Version=1.6.0.0
+
 # To delete outdated files.
 clean:
 	cd %userprofile%\source\repos\Feather\RhinoCommon\pkg\dist
